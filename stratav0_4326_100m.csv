@@ -1,0 +1,4 @@
+system:index,count,map_name,map_value,readable,.geo
+0,2811048,area_standAge,1,non forest,"{""type"":""Point"",""coordinates"":[0.0,0.0]}"
+1,1072322,area_standAge,2,forest less than 20years old,"{""type"":""Point"",""coordinates"":[0.0,0.0]}"
+2,4829545,area_standAge,3,forest greater than 20 years old,"{""type"":""Point"",""coordinates"":[0.0,0.0]}"

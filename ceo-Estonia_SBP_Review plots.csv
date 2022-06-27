@@ -1,0 +1,552 @@
+﻿plotid,email,pl_oldid,pl_strata,strata_label,pl_sampleid,Year of most recent loss? (9999=N/A):0000,Year of most recent forest gain? (9999=N/A):0000,TimeToRecovery,Review,Notes:no comments
+31,isjaques@sig-gis.com,452,3,older than 20,31,1990,1998,8,1,"Difficult to define when the forest gain started, but it was definitely constant from 1999 to 2021.  "
+425,isjaques@sig-gis.com,373,3,older than 21,425,1991,2013,22,1,
+280,jdilger@sig-gis.com,471,3,older than 22,280,1992,2006,14,1,hard one to tell. Pretty confident on loss year. again looks like aspen. 
+233,crystal.wespestad@gmail.com,536,3,older than 23,233,1993,2005,12,1,unsure on date of regrowth
+432,isjaques@sig-gis.com,346,3,older than 24,432,1996,2011,15,1,
+470,isjaques@sig-gis.com,132,2,less than 20 yrs,470,1998,2010,12,1,
+63,isjaques@sig-gis.com,270,2,less than 20 yrs,63,1999,2019,20,1,
+371,crystal.wespestad@gmail.com,408,3,older than 25,371,1999,2019,20,1,"small stand of trees along edge of field and river, filled in enough in 2019 to consider >30% TCC, loss year unclear"
+539,tliu@sig-gis.com,119,2,less than 20 yrs,539,2000,2001,1,1,exact time of forest gain unclear
+518,tliu@sig-gis.com,258,2,less than 20 yrs,518,2000,2007,7,1,edge sample; exact time of forest loss and gain unclear
+15,isjaques@sig-gis.com,61,2,less than 20 yrs,15,2000,2010,10,1,
+488,jdilger@sig-gis.com,489,3,older than 26,488,2000,2010,10,1,Another harder plot. Looks stable until 2000 then some disturbance and starting to become more constant 2021. doesn't look to be clear cut 
+282,jdilger@sig-gis.com,309,3,older than 27,282,2000,2011,11,1,Definitely a disturbance event in 2000. Could have been partial harvest.
+276,isjaques@sig-gis.com,310,3,older than 28,276,2000,2013,13,1,
+366,crystal.wespestad@gmail.com,210,2,less than 20 yrs,366,2000,9999,7999,1,"unsure on loss timing, edge sample, forest stand in middle of agriculture, trees lost for sure before 2006"
+374,tliu@sig-gis.com,264,2,less than 20 yrs,374,2001,2001,0,1,edge sample; time of forest loss and forest gain not exact 
+101,isjaques@sig-gis.com,94,2,less than 20 yrs,101,2001,2013,12,1,
+129,isjaques@sig-gis.com,118,2,less than 20 yrs,129,2001,2015,14,1,
+44,isjaques@sig-gis.com,253,2,less than 20 yrs,44,2001,2016,15,1,
+472,isjaques@sig-gis.com,226,2,less than 20 yrs,472,2001,2019,18,1,
+540,tliu@sig-gis.com,104,2,less than 20 yrs,540,2001,9999,7998,1,edge pixel; possible forest gains some time after 2001
+527,tliu@sig-gis.com,242,2,less than 20 yrs,527,2002,2003,1,1,exact time of forest loss and gain unclear
+179,jdilger@sig-gis.com,141,2,less than 20 yrs,179,2002,2013,11,1,What does 'most recent year of forest gain' mean? 
+118,isjaques@sig-gis.com,89,2,less than 20 yrs,118,2002,2021,19,1,Start of forest gain in 2021
+240,isjaques@sig-gis.com,158,2,less than 20 yrs,240,2002,2021,19,1,
+266,jdilger@sig-gis.com,166,2,less than 20 yrs,266,2003,2009,6,1,"NDFI looks like a loss ~03/04. Looks like aspen forest now, but could be shrub."
+312,jdilger@sig-gis.com,55,2,less than 20 yrs,312,2003,2015,12,1,
+294,jdilger@sig-gis.com,255,2,less than 20 yrs,294,2003,2017,14,1,
+315,jdilger@sig-gis.com,98,2,less than 20 yrs,315,2003,2017,14,1,
+302,tliu@sig-gis.com,195,2,less than 20 yrs,302,2003,2018,15,1,vegetation type since 2018 unclear
+360,crystal.wespestad@gmail.com,70,2,less than 20 yrs,360,2003,2021,18,1,"edge pixel between forest and agriculture, several nearby forest loss events, young forest 2021"
+51,isjaques@sig-gis.com,155,2,less than 20 yrs,51,2003,9999,7996,1,Forest regrowing in 2021
+161,isjaques@sig-gis.com,254,2,less than 20 yrs,161,2003,9999,7996,1,
+182,jdilger@sig-gis.com,134,2,less than 20 yrs,182,2003,,-2003,1,
+490,jdilger@sig-gis.com,95,2,less than 20 yrs,490,2003,,-2003,1,A few sparse trees but mostly shrubby (young forest?)
+421,tliu@sig-gis.com,229,2,less than 20 yrs,421,2004,2007,3,1,edge sample; exact time of forest loss and gain unclear
+193,isjaques@sig-gis.com,124,2,less than 20 yrs,193,2004,2013,9,1,
+28,isjaques@sig-gis.com,209,2,less than 20 yrs,28,2004,2015,11,1,
+145,isjaques@sig-gis.com,268,2,less than 20 yrs,145,2004,2020,16,1,
+234,crystal.wespestad@gmail.com,101,2,less than 20 yrs,234,2004,9999,7995,1,"shrubs near farm, human intervention rows"
+318,tliu@sig-gis.com,224,2,less than 20 yrs,318,2004,9999,7995,1,land cover type before 2004 inferred to be forest
+428,tliu@sig-gis.com,276,2,less than 20 yrs,428,2004,9999,7995,1,edge sample
+497,tliu@sig-gis.com,156,2,less than 20 yrs,497,2004,9999,7995,1,edge sample; exact time of forest loss unclear
+544,tliu@sig-gis.com,187,2,less than 20 yrs,544,2004,9999,7995,1,edge sample
+258,jdilger@sig-gis.com,159,2,less than 20 yrs,258,2005,2014,9,1,looks like degradation in 05 and full loss in 06
+307,jdilger@sig-gis.com,151,2,less than 20 yrs,307,2005,,-2005,1,On edge between stable forest and deforest. 
+255,jdilger@sig-gis.com,198,2,less than 20 yrs,255,2006,2007,1,1,Looks like aspen forest so harder to see loss vrs leaf's falling off
+27,isjaques@sig-gis.com,366,3,older than 29,27,2006,2010,4,1,
+274,jdilger@sig-gis.com,397,3,older than 30,274,2006,2011,5,1,this is a hard plot.
+215,crystal.wespestad@gmail.com,368,3,older than 31,215,2006,2013,7,1,"split pixel, years of conversion unsure"
+394,isjaques@sig-gis.com,249,2,less than 20 yrs,394,2006,2016,10,1,Edge sample
+37,isjaques@sig-gis.com,256,2,less than 20 yrs,37,2006,2017,11,1,
+402,isjaques@sig-gis.com,239,2,less than 20 yrs,402,2006,2019,13,1,
+112,isjaques@sig-gis.com,285,2,less than 20 yrs,112,2006,9999,7993,1,
+138,isjaques@sig-gis.com,153,2,less than 20 yrs,138,2006,9999,7993,1,
+525,tliu@sig-gis.com,300,3,older than 32,525,2006,9999,7993,1,edge sample; forest degradation since around 1995; exact time of forest loss unclear
+74,isjaques@sig-gis.com,223,2,less than 20 yrs,74,2007,2013,6,1,
+437,tliu@sig-gis.com,213,2,less than 20 yrs,437,2007,2014,7,1,"mixed landcover; road, stable forest, and disturbed area; whether and when forest started regrowing unclear  "
+502,tliu@sig-gis.com,174,2,less than 20 yrs,502,2007,2018,11,1,edge sample; vegetation regrowing since 2018
+167,crystal.wespestad@gmail.com,250,2,less than 20 yrs,167,2007,9999,7992,1,"likely agriculture, earlier times less sure"
+535,tliu@sig-gis.com,154,2,less than 20 yrs,535,2008,2009,1,1,vegetation regrowing since some time after 2008
+545,tliu@sig-gis.com,251,2,less than 20 yrs,545,2008,2015,7,1,edge sample; exact time of forest loss and gain inferred
+116,isjaques@sig-gis.com,59,2,less than 20 yrs,116,2008,9999,7991,1,
+305,tliu@sig-gis.com,241,2,less than 20 yrs,305,2008,9999,7991,1,vegetation started regrowing some time after 2015; possible forest regrowing
+289,jdilger@sig-gis.com,273,2,less than 20 yrs,289,2008,,-2008,1,Could be forest now. Hard to tell looks like it's young or shrubs.
+76,isjaques@sig-gis.com,235,2,less than 20 yrs,76,2009,2015,6,1,
+163,crystal.wespestad@gmail.com,231,2,less than 20 yrs,163,2009,2017,8,1,
+21,isjaques@sig-gis.com,211,2,less than 20 yrs,21,2009,2021,12,1,
+159,crystal.wespestad@gmail.com,261,2,less than 20 yrs,159,2009,9999,7990,1,cyclical NDVI/NDFI
+468,isjaques@sig-gis.com,150,2,less than 20 yrs,468,2009,9999,7990,1,
+296,jdilger@sig-gis.com,294,2,less than 20 yrs,296,2009,,-2009,1,Looks like it converted to riparian shrubs after deforestation 
+383,isjaques@sig-gis.com,262,2,less than 20 yrs,383,2010,9999,7989,1,
+400,isjaques@sig-gis.com,269,2,less than 20 yrs,400,2010,9999,7989,1,
+340,crystal.wespestad@gmail.com,97,2,less than 20 yrs,340,2011,2006,-5,1,"unsure on regrowth timing, edge sample, agriculture"
+513,tliu@sig-gis.com,238,2,less than 20 yrs,513,2011,2016,5,1,edge sample; exact time of forest gain unclear
+313,jdilger@sig-gis.com,286,2,less than 20 yrs,313,2011,2017,6,1,"Another corner plot. Very clearly is forest in the 1 pixel, but it surrounded by loss."
+9,isjaques@sig-gis.com,501,3,older than 33,9,2011,2020,9,1,There might be a fire activity from time to time. 
+47,isjaques@sig-gis.com,212,2,less than 20 yrs,47,2011,9999,7988,1,
+132,isjaques@sig-gis.com,100,2,less than 20 yrs,132,2011,9999,7988,1,
+147,isjaques@sig-gis.com,175,2,less than 20 yrs,147,2011,9999,7988,1,
+300,tliu@sig-gis.com,207,2,less than 20 yrs,300,2011,9999,7988,1,possible forest regrowing after 2011
+395,isjaques@sig-gis.com,74,2,less than 20 yrs,395,2011,9999,7988,1,Starting to regrow in 2021
+515,tliu@sig-gis.com,157,2,less than 20 yrs,515,2011,9999,7988,1,edge sample
+45,isjaques@sig-gis.com,129,2,less than 20 yrs,45,2012,9999,7987,1,
+90,isjaques@sig-gis.com,196,2,less than 20 yrs,90,2012,9999,7987,1,
+114,isjaques@sig-gis.com,259,2,less than 20 yrs,114,2012,9999,7987,1,
+409,isjaques@sig-gis.com,181,2,less than 20 yrs,409,2012,9999,7987,1,Seems to be a working forest. 
+519,tliu@sig-gis.com,115,2,less than 20 yrs,519,2012,9999,7987,1,no comments
+20,isjaques@sig-gis.com,110,2,less than 20 yrs,20,2013,2011,-2,1,
+43,isjaques@sig-gis.com,283,2,less than 20 yrs,43,2013,2021,8,1,
+88,isjaques@sig-gis.com,182,2,less than 20 yrs,88,2013,9999,7986,1,
+119,isjaques@sig-gis.com,162,2,less than 20 yrs,119,2013,9999,7986,1,Seems to be starting to recover in 2021. 
+130,isjaques@sig-gis.com,179,2,less than 20 yrs,130,2013,9999,7986,1,
+241,crystal.wespestad@gmail.com,71,2,less than 20 yrs,241,2013,9999,7986,1,human intervention lines near agriculture
+244,isjaques@sig-gis.com,292,2,less than 20 yrs,244,2013,9999,7986,1,
+245,isjaques@sig-gis.com,140,2,less than 20 yrs,245,2013,9999,7986,1,Maybe starting to grow again in 2021. 
+297,tliu@sig-gis.com,87,2,less than 20 yrs,297,2013,9999,7986,1,no comments
+320,tliu@sig-gis.com,199,2,less than 20 yrs,320,2013,9999,7986,1,forest degradation before forest loss
+362,isjaques@sig-gis.com,146,2,less than 20 yrs,362,2013,9999,7986,1,
+447,isjaques@sig-gis.com,112,2,less than 20 yrs,447,2013,9999,7986,1,
+265,jdilger@sig-gis.com,184,2,less than 20 yrs,265,2013,,-2013,1,Looks like loss started in 2013 and was partially removed on 7/2013. Depending on composite could be captured as 2014
+356,crystal.wespestad@gmail.com,93,2,less than 20 yrs,356,2014,1998,-16,1,"transition to forest unsure because was sparse trees for quite a while, higher max NDVI in 1998, dense trees before most recent loss"
+10,isjaques@sig-gis.com,113,2,less than 20 yrs,10,2014,2016,2,1,Not enough images. Land cover seems to be changing frequently between clear cut and forest restoration (plantation or natural regeneration). 
+122,isjaques@sig-gis.com,56,2,less than 20 yrs,122,2014,2019,5,1,
+144,isjaques@sig-gis.com,26,1,non forest,144,2014,2021,7,1,
+202,isjaques@sig-gis.com,168,2,less than 20 yrs,202,2014,2021,7,1,
+55,isjaques@sig-gis.com,204,2,less than 20 yrs,55,2014,9999,7985,1,
+92,isjaques@sig-gis.com,190,2,less than 20 yrs,92,2014,9999,7985,1,
+108,isjaques@sig-gis.com,57,2,less than 20 yrs,108,2014,9999,7985,1,
+142,isjaques@sig-gis.com,191,2,less than 20 yrs,142,2014,9999,7985,1,
+162,isjaques@sig-gis.com,245,2,less than 20 yrs,162,2014,9999,7985,1,
+301,tliu@sig-gis.com,186,2,less than 20 yrs,301,2014,9999,7985,1,no comments
+456,isjaques@sig-gis.com,297,2,less than 20 yrs,456,2014,9999,7985,1,
+479,tliu@sig-gis.com,116,2,less than 20 yrs,479,2014,9999,7985,1,no comments
+503,tliu@sig-gis.com,69,2,less than 20 yrs,503,2014,9999,7985,1,possible forest regrowing after 2014
+506,tliu@sig-gis.com,275,2,less than 20 yrs,506,2014,9999,7985,1,no comments
+293,jdilger@sig-gis.com,102,2,less than 20 yrs,293,2014,,-2014,1,
+309,jdilger@sig-gis.com,180,2,less than 20 yrs,309,2014,,-2014,1,
+401,isjaques@sig-gis.com,290,2,less than 20 yrs,401,2015,1995,-20,1,"Forest loss before 1990, regrowth in 1995. Then Forest loss again in 2015. "
+221,crystal.wespestad@gmail.com,220,2,less than 20 yrs,221,2015,2011,-4,1,"split pixel, still some trees, repetitive forest disturbances, ow confidence on reforestation timing"
+451,tliu@sig-gis.com,542,3,older than 34,451,2015,2019,4,1,edge sample; exact time of forest gain unclear
+26,isjaques@sig-gis.com,289,2,less than 20 yrs,26,2015,9999,7984,1,
+95,isjaques@sig-gis.com,99,2,less than 20 yrs,95,2015,9999,7984,1,
+174,crystal.wespestad@gmail.com,163,2,less than 20 yrs,174,2015,9999,7984,1,split agriculture/road/forest 
+200,isjaques@sig-gis.com,185,2,less than 20 yrs,200,2015,9999,7984,1,
+353,isjaques@sig-gis.com,60,2,less than 20 yrs,353,2015,9999,7984,1,Edge Sample
+378,crystal.wespestad@gmail.com,161,2,less than 20 yrs,378,2015,9999,7984,1,agriculture
+380,tliu@sig-gis.com,293,2,less than 20 yrs,380,2015,9999,7984,1,edge sample
+408,isjaques@sig-gis.com,76,2,less than 20 yrs,408,2015,9999,7984,1,
+417,isjaques@sig-gis.com,131,2,less than 20 yrs,417,2015,9999,7984,1,
+436,crystal.wespestad@gmail.com,169,2,less than 20 yrs,436,2015,9999,7984,1,total forest removal
+511,tliu@sig-gis.com,237,2,less than 20 yrs,511,2015,9999,7984,1,no comments
+283,jdilger@sig-gis.com,173,2,less than 20 yrs,283,2015,,-2015,1,
+478,isjaques@sig-gis.com,257,2,less than 20 yrs,478,2016,1997,-19,1,
+337,isjaques@sig-gis.com,72,2,less than 20 yrs,337,2016,1999,-17,1,"Mixed landcover, road crossing the plot. "
+34,isjaques@sig-gis.com,147,2,less than 20 yrs,34,2016,2018,2,1,
+176,isjaques@sig-gis.com,103,2,less than 20 yrs,176,2016,2021,5,1,Repetitive Forest disturbances. 
+393,isjaques@sig-gis.com,467,3,older than 35,393,2016,2021,5,1,Starting to regrow in 2021.
+18,isjaques@sig-gis.com,170,2,less than 20 yrs,18,2016,9999,7983,1,
+40,isjaques@sig-gis.com,82,2,less than 20 yrs,40,2016,9999,7983,1,
+73,isjaques@sig-gis.com,139,2,less than 20 yrs,73,2016,9999,7983,1,
+91,isjaques@sig-gis.com,177,2,less than 20 yrs,91,2016,9999,7983,1,
+131,isjaques@sig-gis.com,63,2,less than 20 yrs,131,2016,9999,7983,1,
+189,isjaques@sig-gis.com,296,2,less than 20 yrs,189,2016,9999,7983,1,
+299,tliu@sig-gis.com,266,2,less than 20 yrs,299,2016,9999,7983,1,edge sample; mixed landcover
+350,isjaques@sig-gis.com,125,2,less than 20 yrs,350,2016,9999,7983,1,Mixed landcover
+444,isjaques@sig-gis.com,51,2,less than 20 yrs,444,2016,9999,7983,1,
+524,tliu@sig-gis.com,277,2,less than 20 yrs,524,2016,9999,7983,1,edge sample; possible forest regrowth after 2016
+443,tliu@sig-gis.com,356,3,older than 36,443,2016,9999,7983,1,mixed landcover; forest disturbance since 2000s
+335,crystal.wespestad@gmail.com,236,2,less than 20 yrs,335,2017,2016,-1,1,"edge sample, several nearby deforestation events, maybe partially forested most of the time, deforestation time inexact"
+175,jdilger@sig-gis.com,96,2,less than 20 yrs,175,2017,2018,1,1,looks like forest in bing 2022
+369,isjaques@sig-gis.com,215,2,less than 20 yrs,369,2017,2021,4,1,"Starting to regrow in 2021, still not high enough to be considered Forest though. "
+252,crystal.wespestad@gmail.com,456,3,older than 37,252,2017,2021,4,1,forest young in 2021
+30,isjaques@sig-gis.com,106,2,less than 20 yrs,30,2017,9999,7982,1,
+35,isjaques@sig-gis.com,127,2,less than 20 yrs,35,2017,9999,7982,1,
+127,isjaques@sig-gis.com,65,2,less than 20 yrs,127,2017,9999,7982,1,
+198,isjaques@sig-gis.com,62,2,less than 20 yrs,198,2017,9999,7982,1,
+205,isjaques@sig-gis.com,114,2,less than 20 yrs,205,2017,9999,7982,1,
+237,isjaques@sig-gis.com,133,2,less than 20 yrs,237,2017,9999,7982,1,
+243,isjaques@sig-gis.com,243,2,less than 20 yrs,243,2017,9999,7982,1,
+358,isjaques@sig-gis.com,188,2,less than 20 yrs,358,2017,9999,7982,1,"Mixed landcover. Half of the plot had forest loss, half remained forest. "
+386,isjaques@sig-gis.com,88,2,less than 20 yrs,386,2017,9999,7982,1,
+392,isjaques@sig-gis.com,203,2,less than 20 yrs,392,2017,9999,7982,1,
+288,jdilger@sig-gis.com,221,2,less than 20 yrs,288,2017,,-2017,1,
+321,isjaques@sig-gis.com,145,2,less than 20 yrs,321,2018,1997,-21,1,"Lost of forest before 1991, forest gain around 1997. Last forest loss in 2018. "
+370,crystal.wespestad@gmail.com,216,2,less than 20 yrs,370,2018,1997,-21,1,"planted forest, in rows, small loss area for installing wind farm, gain year based on graph"
+7,isjaques@sig-gis.com,183,2,less than 20 yrs,7,2018,2019,1,1,
+66,isjaques@sig-gis.com,201,2,less than 20 yrs,66,2018,9999,7981,1,
+149,isjaques@sig-gis.com,130,2,less than 20 yrs,149,2018,9999,7981,1,
+196,isjaques@sig-gis.com,265,2,less than 20 yrs,196,2018,9999,7981,1,
+207,isjaques@sig-gis.com,299,2,less than 20 yrs,207,2018,9999,7981,1,
+214,isjaques@sig-gis.com,194,2,less than 20 yrs,214,2018,9999,7981,1,
+223,isjaques@sig-gis.com,281,2,less than 20 yrs,223,2018,9999,7981,1,
+319,tliu@sig-gis.com,167,2,less than 20 yrs,319,2018,9999,7981,1,forest degradation before forest loss
+364,tliu@sig-gis.com,284,2,less than 20 yrs,364,2018,9999,7981,1,possible forest regrowing since 2019
+404,isjaques@sig-gis.com,252,2,less than 20 yrs,404,2018,9999,7981,1,
+461,isjaques@sig-gis.com,142,2,less than 20 yrs,461,2018,9999,7981,1,
+62,isjaques@sig-gis.com,549,3,older than 38,62,2018,9999,7981,1,
+382,isjaques@sig-gis.com,227,2,less than 20 yrs,382,2019,2021,2,1,
+49,isjaques@sig-gis.com,230,2,less than 20 yrs,49,2019,9999,7980,1,
+58,isjaques@sig-gis.com,176,2,less than 20 yrs,58,2019,9999,7980,1,
+348,isjaques@sig-gis.com,137,2,less than 20 yrs,348,2019,9999,7980,1,
+373,crystal.wespestad@gmail.com,64,2,less than 20 yrs,373,2019,9999,7980,1,"degradation before loss, small area of loss"
+48,isjaques@sig-gis.com,369,3,older than 39,48,2019,9999,7980,1,
+81,isjaques@sig-gis.com,545,3,older than 40,81,2019,9999,7980,1,Plot is near the boundary between two different land covers.
+306,tliu@sig-gis.com,421,3,older than 41,306,2019,9999,7980,1,vegetation type after 2019 unclear
+361,isjaques@sig-gis.com,469,3,older than 42,361,2019,9999,7980,1,
+311,jdilger@sig-gis.com,90,2,less than 20 yrs,311,2019,,-2019,1,Another corner plot
+113,isjaques@sig-gis.com,540,3,older than 43,113,2020,1995,-25,1,Forest with multiple disturbances. Also seemed to be weather related. 
+136,isjaques@sig-gis.com,54,2,less than 20 yrs,136,2020,2021,1,1,Repetitive forest disturbances. Trees regrowing in 2021
+449,isjaques@sig-gis.com,538,3,older than 44,449,2020,9999,7979,1,
+543,tliu@sig-gis.com,329,3,older than 45,543,2020,9999,7979,1,edge sample
+2,isjaques@sig-gis.com,295,2,less than 20 yrs,2,2021,1995,-26,1,"Pixel position moves slightly throughout the years on GEP. There seem to be a loos in 1994, with regeneration starting the following year. Then loss again in 2021. "
+71,isjaques@sig-gis.com,263,2,less than 20 yrs,71,2021,2019,-2,1,Repetitive forest disturbances. 
+3,isjaques@sig-gis.com,73,2,less than 20 yrs,3,2021,9999,7978,1,
+332,isjaques@sig-gis.com,222,2,less than 20 yrs,332,2021,9999,7978,1,Edge sample. Difficult to define the exact year of forest loss. 
+381,tliu@sig-gis.com,217,2,less than 20 yrs,381,2021,9999,7978,1,edge sample
+457,tliu@sig-gis.com,109,2,less than 20 yrs,457,2021,9999,7978,1,edge sample
+501,tliu@sig-gis.com,225,2,less than 20 yrs,501,2021,9999,7978,1,edge sample
+56,isjaques@sig-gis.com,443,3,older than 46,56,2021,9999,7978,1,
+253,isjaques@sig-gis.com,445,3,older than 47,253,2021,9999,7978,1,
+286,jdilger@sig-gis.com,433,3,older than 48,286,2021,,-2021,1,This plot is right on the edge of a forest line by a house. It still looks intact in 2021 but degraded. Less than 30m to the south of it is a clear cut.
+388,tliu@sig-gis.com,319,3,older than 49,388,9999,1990,-8009,1,vegetation type unclear; exact time of vegetation gain unclear
+520,tliu@sig-gis.com,392,3,older than 50,520,9999,1991,-8008,1,exact time of forest gain unclear
+422,isjaques@sig-gis.com,351,3,older than 51,422,9999,1992,-8007,1,
+462,isjaques@sig-gis.com,425,3,older than 52,462,9999,1992,-8007,1,Forest loss before 1990. Recovery in 1992
+463,isjaques@sig-gis.com,338,3,older than 53,463,9999,1992,-8007,1,
+464,isjaques@sig-gis.com,205,2,less than 20 yrs,464,9999,1994,-8005,1,
+491,isjaques@sig-gis.com,521,3,older than 54,491,9999,1994,-8005,1,
+93,isjaques@sig-gis.com,78,2,less than 20 yrs,93,9999,1995,-8004,1,Forest loss before 1990 and forest gain in 1995. 
+410,isjaques@sig-gis.com,247,2,less than 20 yrs,410,9999,1995,-8004,1,Forest loss before 1990. Forest gain in 1995
+416,isjaques@sig-gis.com,193,2,less than 20 yrs,416,9999,1996,-8003,1,Forest loss before 1990. Forest regrowth in 1996
+229,crystal.wespestad@gmail.com,409,3,older than 55,229,9999,1996,-8003,1,"trees may have been thinned, non-dense forest"
+105,isjaques@sig-gis.com,455,3,older than 56,105,9999,1997,-8002,1,Forest Loss before 1990. Forest gain in 1997. 
+33,isjaques@sig-gis.com,414,3,older than 57,33,9999,1998,-8001,1,"Forest loss seemed to have happened before 1990, but recovery is observed before 1999 (difficult to define the exact year) and still remains Forest. "
+41,isjaques@sig-gis.com,398,3,older than 58,41,9999,1998,-8001,1,Forest loss before 1990 and recovery around 1998. 
+146,isjaques@sig-gis.com,379,3,older than 59,146,9999,2002,-7997,1,"Forest loss before 1990. Recovery in 2002, approximately. "
+440,isjaques@sig-gis.com,504,3,older than 60,440,9999,2002,-7997,1,
+413,isjaques@sig-gis.com,312,3,older than 61,413,9999,2003,-7996,1,Forest loss before 1990. difficult to define year of regrowth.
+151,isjaques@sig-gis.com,382,3,older than 62,151,9999,2006,-7993,1,Forest loss before 1990. Forest recovery around 2006. 
+398,isjaques@sig-gis.com,377,3,older than 63,398,9999,2006,-7993,1,"Forest loss before 1990, regrowth around 2006"
+158,isjaques@sig-gis.com,386,3,older than 64,158,9999,2007,-7992,1,Forest loss before 1990. Recovery around 2007. 
+274,tliu@sig-gis.com,397,3,older than 65,274,9999,2009,-7990,1,mixed landcover
+67,isjaques@sig-gis.com,337,3,older than 66,67,9999,2011,-7988,1,"Forest loss occurred before 1990. Forest recovery happened through the years, with a noticeable growth in 2011 ."
+473,isjaques@sig-gis.com,345,3,older than 67,473,9999,2011,-7988,1,
+549,tliu@sig-gis.com,311,3,older than 68,549,9999,2013,-7986,1,edge sample
+4,isjaques@sig-gis.com,45,1,non forest,4,9999,9999,0,,Cropland for the entire time!
+17,isjaques@sig-gis.com,11,1,non forest,17,9999,9999,0,,Non Forest
+38,isjaques@sig-gis.com,14,1,non forest,38,9999,9999,0,,Water
+53,isjaques@sig-gis.com,5,1,non forest,53,9999,9999,0,,
+59,isjaques@sig-gis.com,36,1,non forest,59,9999,9999,0,,Water
+61,isjaques@sig-gis.com,2,1,non forest,61,9999,9999,0,,Non Forest
+79,isjaques@sig-gis.com,10,1,non forest,79,9999,9999,0,,Non Forest
+124,isjaques@sig-gis.com,44,1,non forest,124,9999,9999,0,,Water
+140,isjaques@sig-gis.com,21,1,non forest,140,9999,9999,0,,Non-Forest
+154,isjaques@sig-gis.com,47,1,non forest,154,9999,9999,0,,Non-Forest
+168,isjaques@sig-gis.com,39,1,non forest,168,9999,9999,0,,Non-Forest
+173,isjaques@sig-gis.com,42,1,non forest,173,9999,9999,0,,Non-Forest
+195,isjaques@sig-gis.com,43,1,non forest,195,9999,9999,0,,Non-Forest
+197,isjaques@sig-gis.com,37,1,non forest,197,9999,9999,0,,Water
+201,isjaques@sig-gis.com,18,1,non forest,201,9999,9999,0,,Looks like a shrubland area.  
+206,isjaques@sig-gis.com,13,1,non forest,206,9999,9999,0,,Non-Forest
+212,isjaques@sig-gis.com,48,1,non forest,212,9999,9999,0,,Non-Forest
+216,isjaques@sig-gis.com,30,1,non forest,216,9999,9999,0,,Non-Forest
+239,isjaques@sig-gis.com,46,1,non forest,239,9999,9999,0,,Road
+242,isjaques@sig-gis.com,12,1,non forest,242,9999,9999,0,,Road
+248,isjaques@sig-gis.com,0,1,non forest,248,9999,9999,0,,
+262,isjaques@sig-gis.com,16,1,non forest,262,9999,9999,0,,Non-Forest
+278,isjaques@sig-gis.com,24,1,non forest,278,9999,9999,0,,
+323,tliu@sig-gis.com,19,1,non forest,323,9999,9999,0,,no comments
+324,tliu@sig-gis.com,49,1,non forest,324,9999,9999,0,,stable non-forest
+330,crystal.wespestad@gmail.com,41,1,non forest,330,9999,9999,0,,"stable non-forest, agriculture since beginning"
+334,crystal.wespestad@gmail.com,4,1,non forest,334,9999,9999,0,,agriculture
+343,tliu@sig-gis.com,8,1,non forest,343,9999,9999,0,,stable non-forest
+347,isjaques@sig-gis.com,1,1,non forest,347,9999,9999,0,,Non-Forest
+363,isjaques@sig-gis.com,17,1,non forest,363,9999,9999,0,,Non-Forest
+368,isjaques@sig-gis.com,33,1,non forest,368,9999,9999,0,,Non-Forest
+385,isjaques@sig-gis.com,3,1,non forest,385,9999,9999,0,,Non-Forest
+387,tliu@sig-gis.com,20,1,non forest,387,9999,9999,0,,non-forest
+390,isjaques@sig-gis.com,25,1,non forest,390,9999,9999,0,,Non-Forest
+403,isjaques@sig-gis.com,31,1,non forest,403,9999,9999,0,,Non-Forest
+430,isjaques@sig-gis.com,22,1,non forest,430,9999,9999,0,,Non-Forest
+452,isjaques@sig-gis.com,27,1,non forest,452,9999,9999,0,,Non-Forest
+483,isjaques@sig-gis.com,34,1,non forest,483,9999,9999,0,,Non-Forest
+485,isjaques@sig-gis.com,7,1,non forest,485,9999,9999,0,,Non-Forest
+486,isjaques@sig-gis.com,6,1,non forest,486,9999,9999,0,,Non-Forest
+505,tliu@sig-gis.com,28,1,non forest,505,9999,9999,0,,stable non-forest
+508,tliu@sig-gis.com,38,1,non forest,508,9999,9999,0,,stable non-forest
+510,tliu@sig-gis.com,32,1,non forest,510,9999,9999,0,,stable non-forest
+533,tliu@sig-gis.com,29,1,non forest,533,9999,9999,0,,stable non-forest
+537,tliu@sig-gis.com,40,1,non forest,537,9999,9999,0,,stable non-forest
+541,tliu@sig-gis.com,23,1,non forest,541,9999,9999,0,,stable non-forest
+547,tliu@sig-gis.com,9,1,non forest,547,9999,9999,0,,stable non-forest
+8,isjaques@sig-gis.com,288,2,less than 20 yrs,8,9999,9999,0,,"There seem to be some selecting logging activity, but the land cover seemed to have remained Forest for the whole period. "
+12,isjaques@sig-gis.com,75,2,less than 20 yrs,12,9999,9999,0,,Seems to be cropland the whole time. 
+14,isjaques@sig-gis.com,126,2,less than 20 yrs,14,9999,9999,0,,
+23,isjaques@sig-gis.com,232,2,less than 20 yrs,23,9999,9999,0,,
+32,isjaques@sig-gis.com,138,2,less than 20 yrs,32,9999,9999,0,,
+52,isjaques@sig-gis.com,171,2,less than 20 yrs,52,9999,9999,0,,Repetitive forest disturbances in the surroundings. 
+54,isjaques@sig-gis.com,108,2,less than 20 yrs,54,9999,9999,0,,
+57,isjaques@sig-gis.com,280,2,less than 20 yrs,57,9999,9999,0,,
+60,isjaques@sig-gis.com,81,2,less than 20 yrs,60,9999,9999,0,,
+69,isjaques@sig-gis.com,165,2,less than 20 yrs,69,9999,9999,0,,"Forest loss in the surroundings, but Pixel area remained Forest. "
+70,isjaques@sig-gis.com,52,2,less than 20 yrs,70,9999,9999,0,,"Forest Loss in the surroudings, but pixel area remained forest. "
+86,isjaques@sig-gis.com,91,2,less than 20 yrs,86,9999,9999,0,,
+87,isjaques@sig-gis.com,274,2,less than 20 yrs,87,9999,9999,0,,
+94,isjaques@sig-gis.com,58,2,less than 20 yrs,94,9999,9999,0,,
+96,isjaques@sig-gis.com,272,2,less than 20 yrs,96,9999,9999,0,,Road
+99,isjaques@sig-gis.com,160,2,less than 20 yrs,99,9999,9999,0,,
+102,isjaques@sig-gis.com,136,2,less than 20 yrs,102,9999,9999,0,,Non Forest
+109,isjaques@sig-gis.com,218,2,less than 20 yrs,109,9999,9999,0,,"Small corridor of trees left out, unsure if it should be considered Forest. "
+110,isjaques@sig-gis.com,77,2,less than 20 yrs,110,9999,9999,0,,
+120,isjaques@sig-gis.com,143,2,less than 20 yrs,120,9999,9999,0,,
+123,isjaques@sig-gis.com,208,2,less than 20 yrs,123,9999,9999,0,,Non-Forest
+126,isjaques@sig-gis.com,178,2,less than 20 yrs,126,9999,9999,0,,
+128,isjaques@sig-gis.com,202,2,less than 20 yrs,128,9999,9999,0,,
+133,isjaques@sig-gis.com,234,2,less than 20 yrs,133,9999,9999,0,,
+137,isjaques@sig-gis.com,148,2,less than 20 yrs,137,9999,9999,0,,
+143,isjaques@sig-gis.com,233,2,less than 20 yrs,143,9999,9999,0,,Forest aspect changes due to weather variations. 
+166,isjaques@sig-gis.com,282,2,less than 20 yrs,166,9999,9999,0,,
+169,isjaques@sig-gis.com,244,2,less than 20 yrs,169,9999,9999,0,,
+188,isjaques@sig-gis.com,120,2,less than 20 yrs,188,9999,9999,0,,Non-Forest
+192,crystal.wespestad@gmail.com,121,2,less than 20 yrs,192,9999,9999,0,,likely farm with some trees
+204,isjaques@sig-gis.com,122,2,less than 20 yrs,204,9999,9999,0,,
+208,isjaques@sig-gis.com,248,2,less than 20 yrs,208,9999,9999,0,,
+213,crystal.wespestad@gmail.com,240,2,less than 20 yrs,213,9999,9999,0,,short trees (maybe shrubs)
+218,isjaques@sig-gis.com,278,2,less than 20 yrs,218,9999,9999,0,,
+231,isjaques@sig-gis.com,68,2,less than 20 yrs,231,9999,9999,0,,
+235,isjaques@sig-gis.com,117,2,less than 20 yrs,235,9999,9999,0,,
+250,crystal.wespestad@gmail.com,164,2,less than 20 yrs,250,9999,9999,0,,dense shrubs and sporadic trees in 2013 possibly mislabeled as forest
+256,isjaques@sig-gis.com,152,2,less than 20 yrs,256,9999,9999,0,,Road
+260,isjaques@sig-gis.com,287,2,less than 20 yrs,260,9999,9999,0,,Non-Forest
+263,isjaques@sig-gis.com,111,2,less than 20 yrs,263,9999,9999,0,,Non-Forest
+264,isjaques@sig-gis.com,135,2,less than 20 yrs,264,9999,9999,0,,
+270,isjaques@sig-gis.com,298,2,less than 20 yrs,270,9999,9999,0,,
+298,tliu@sig-gis.com,85,2,less than 20 yrs,298,9999,9999,0,,no comments
+329,crystal.wespestad@gmail.com,66,2,less than 20 yrs,329,9999,9999,0,,"edge sample, nearby clear forest degradation and loss, selective logging may be present"
+333,crystal.wespestad@gmail.com,189,2,less than 20 yrs,333,9999,9999,0,,"likely regrowing forest 2021, looks like rows of planted trees or large bushes"
+338,crystal.wespestad@gmail.com,107,2,less than 20 yrs,338,9999,9999,0,,"edge sample, near agriculture"
+342,crystal.wespestad@gmail.com,144,2,less than 20 yrs,342,9999,9999,0,,"likely selective logging in 2015, edge sample, repetitive forest disturbances starting about 2006 "
+354,crystal.wespestad@gmail.com,206,2,less than 20 yrs,354,9999,9999,0,,"edge pixel between different fields, agriculture of tall dense vegetation but don't think it is trees, repeated intervention, vertical lines removed, never true forest"
+355,crystal.wespestad@gmail.com,79,2,less than 20 yrs,355,9999,9999,0,,"edge sample by agriculture, thinned and degraded starting in 2000"
+367,isjaques@sig-gis.com,192,2,less than 20 yrs,367,9999,9999,0,,
+376,crystal.wespestad@gmail.com,149,2,less than 20 yrs,376,9999,9999,0,,"edge sample with forest and bare ground, geolocation could be an issue, human disturbance but probably not >50% loss of sample area"
+377,crystal.wespestad@gmail.com,260,2,less than 20 yrs,377,9999,9999,0,,road for full study period
+406,isjaques@sig-gis.com,246,2,less than 20 yrs,406,9999,9999,0,,Non-Forest. Edge sample
+412,isjaques@sig-gis.com,53,2,less than 20 yrs,412,9999,9999,0,,
+423,isjaques@sig-gis.com,84,2,less than 20 yrs,423,9999,9999,0,,Edge sample
+424,isjaques@sig-gis.com,86,2,less than 20 yrs,424,9999,9999,0,,Edge sample
+427,isjaques@sig-gis.com,80,2,less than 20 yrs,427,9999,9999,0,,Non-Forest
+431,isjaques@sig-gis.com,214,2,less than 20 yrs,431,9999,9999,0,,Edge sample
+445,isjaques@sig-gis.com,291,2,less than 20 yrs,445,9999,9999,0,,Edge sample
+453,isjaques@sig-gis.com,105,2,less than 20 yrs,453,9999,9999,0,,Edge sample
+454,isjaques@sig-gis.com,219,2,less than 20 yrs,454,9999,9999,0,,
+460,tliu@sig-gis.com,279,2,less than 20 yrs,460,9999,9999,0,,edge sample; forest degradation in 2003
+465,isjaques@sig-gis.com,50,2,less than 20 yrs,465,9999,9999,0,,
+471,tliu@sig-gis.com,267,2,less than 20 yrs,471,9999,9999,0,,no comments
+474,isjaques@sig-gis.com,271,2,less than 20 yrs,474,9999,9999,0,,
+475,isjaques@sig-gis.com,228,2,less than 20 yrs,475,9999,9999,0,,Edge sample
+481,isjaques@sig-gis.com,197,2,less than 20 yrs,481,9999,9999,0,,
+484,isjaques@sig-gis.com,128,2,less than 20 yrs,484,9999,9999,0,,Edge sample
+499,tliu@sig-gis.com,92,2,less than 20 yrs,499,9999,9999,0,,mixed landcover
+500,tliu@sig-gis.com,172,2,less than 20 yrs,500,9999,9999,0,,edge sample; possible forest degradation in 2002
+546,tliu@sig-gis.com,67,2,less than 20 yrs,546,9999,9999,0,,edge sample
+550,tliu@sig-gis.com,200,2,less than 20 yrs,550,9999,9999,0,,edge sample
+1,isjaques@sig-gis.com,446,3,older than 69,1,9999,9999,0,,
+5,isjaques@sig-gis.com,495,3,older than 70,5,9999,9999,0,,
+6,isjaques@sig-gis.com,449,3,older than 71,6,9999,9999,0,,Always non-forest
+11,isjaques@sig-gis.com,528,3,older than 72,11,9999,9999,0,,Non Forest for the entire period. 
+13,isjaques@sig-gis.com,484,3,older than 73,13,9999,9999,0,,Forest the whole period. 
+16,isjaques@sig-gis.com,383,3,older than 74,16,9999,9999,0,,
+19,isjaques@sig-gis.com,411,3,older than 75,19,9999,9999,0,,
+22,isjaques@sig-gis.com,323,3,older than 76,22,9999,9999,0,,
+24,isjaques@sig-gis.com,458,3,older than 77,24,9999,9999,0,,
+25,isjaques@sig-gis.com,418,3,older than 78,25,9999,9999,0,,
+29,isjaques@sig-gis.com,339,3,older than 79,29,9999,9999,0,,
+36,isjaques@sig-gis.com,360,3,older than 80,36,9999,9999,0,,
+39,isjaques@sig-gis.com,510,3,older than 81,39,9999,9999,0,,
+42,isjaques@sig-gis.com,301,3,older than 82,42,9999,9999,0,,
+46,isjaques@sig-gis.com,413,3,older than 83,46,9999,9999,0,,
+50,isjaques@sig-gis.com,417,3,older than 84,50,9999,9999,0,,
+64,isjaques@sig-gis.com,393,3,older than 85,64,9999,9999,0,,
+65,isjaques@sig-gis.com,374,3,older than 86,65,9999,9999,0,,
+68,isjaques@sig-gis.com,378,3,older than 87,68,9999,9999,0,,
+72,isjaques@sig-gis.com,422,3,older than 88,72,9999,9999,0,,Forest loss in the surroundings. 
+75,isjaques@sig-gis.com,302,3,older than 89,75,9999,9999,0,,Non Forest
+77,isjaques@sig-gis.com,372,3,older than 90,77,9999,9999,0,,
+78,isjaques@sig-gis.com,376,3,older than 91,78,9999,9999,0,,Repetitive forest disturbances. Tress seem dry out frequently (maybe weather related).
+80,isjaques@sig-gis.com,462,3,older than 92,80,9999,9999,0,,
+82,isjaques@sig-gis.com,507,3,older than 93,82,9999,9999,0,,
+83,isjaques@sig-gis.com,380,3,older than 94,83,9999,9999,0,,
+84,isjaques@sig-gis.com,437,3,older than 95,84,9999,9999,0,,
+85,isjaques@sig-gis.com,333,3,older than 96,85,9999,9999,0,,
+89,isjaques@sig-gis.com,385,3,older than 97,89,9999,9999,0,,Non Forest
+97,isjaques@sig-gis.com,524,3,older than 98,97,9999,9999,0,,Forest plantation? 
+98,isjaques@sig-gis.com,453,3,older than 99,98,9999,9999,0,,
+100,isjaques@sig-gis.com,497,3,older than 100,100,9999,9999,0,,
+103,isjaques@sig-gis.com,529,3,older than 101,103,9999,9999,0,,
+104,isjaques@sig-gis.com,426,3,older than 102,104,9999,9999,0,,Non-Forest
+106,isjaques@sig-gis.com,407,3,older than 103,106,9999,9999,0,,
+107,isjaques@sig-gis.com,361,3,older than 104,107,9999,9999,0,,
+111,isjaques@sig-gis.com,336,3,older than 105,111,9999,9999,0,,Non-Forest
+115,isjaques@sig-gis.com,405,3,older than 106,115,9999,9999,0,,"Building in the surroundings, but plot lays on a Forest area. "
+117,isjaques@sig-gis.com,431,3,older than 107,117,9999,9999,0,,
+121,isjaques@sig-gis.com,531,3,older than 108,121,9999,9999,0,,
+125,isjaques@sig-gis.com,498,3,older than 109,125,9999,9999,0,,
+134,isjaques@sig-gis.com,438,3,older than 110,134,9999,9999,0,,Variation in  canopy cover due to weather conditions. 
+135,isjaques@sig-gis.com,391,3,older than 111,135,9999,9999,0,,Non-Forest
+139,isjaques@sig-gis.com,491,3,older than 112,139,9999,9999,0,,
+141,isjaques@sig-gis.com,503,3,older than 113,141,9999,9999,0,,Forest loss before 1991.
+148,isjaques@sig-gis.com,475,3,older than 114,148,9999,9999,0,,
+150,isjaques@sig-gis.com,461,3,older than 115,150,9999,9999,0,,Non-Forest
+152,isjaques@sig-gis.com,530,3,older than 116,152,9999,9999,0,,
+153,isjaques@sig-gis.com,440,3,older than 117,153,9999,9999,0,,Road
+155,isjaques@sig-gis.com,520,3,older than 118,155,9999,9999,0,,
+156,isjaques@sig-gis.com,353,3,older than 119,156,9999,9999,0,,Non-Forest
+157,isjaques@sig-gis.com,427,3,older than 120,157,9999,9999,0,,Plot falls between two land covers 50% Forest 50% Non-Forest. 
+160,isjaques@sig-gis.com,303,3,older than 121,160,9999,9999,0,,
+164,isjaques@sig-gis.com,546,3,older than 122,164,9999,9999,0,,
+165,isjaques@sig-gis.com,517,3,older than 123,165,9999,9999,0,,Non-Forest
+170,isjaques@sig-gis.com,396,3,older than 124,170,9999,9999,0,,
+171,isjaques@sig-gis.com,430,3,older than 125,171,9999,9999,0,,Non-Forest
+172,crystal.wespestad@gmail.com,326,3,older than 126,172,9999,9999,0,,"someone's yard, always nonforest"
+177,isjaques@sig-gis.com,332,3,older than 127,177,9999,9999,0,,Non-Forest
+180,isjaques@sig-gis.com,363,3,older than 128,180,9999,9999,0,,
+181,isjaques@sig-gis.com,320,3,older than 129,181,9999,9999,0,,
+183,crystal.wespestad@gmail.com,410,3,older than 130,183,9999,9999,0,,farm
+184,isjaques@sig-gis.com,416,3,older than 131,184,9999,9999,0,,
+185,isjaques@sig-gis.com,403,3,older than 132,185,9999,9999,0,,
+186,isjaques@sig-gis.com,476,3,older than 133,186,9999,9999,0,,Non-Forest
+187,isjaques@sig-gis.com,324,3,older than 134,187,9999,9999,0,,
+190,isjaques@sig-gis.com,465,3,older than 135,190,9999,9999,0,,
+191,isjaques@sig-gis.com,543,3,older than 136,191,9999,9999,0,,Plot really near the boundary between two different land covers. 
+194,isjaques@sig-gis.com,420,3,older than 137,194,9999,9999,0,,Non-Forest
+199,isjaques@sig-gis.com,506,3,older than 138,199,9999,9999,0,,
+203,isjaques@sig-gis.com,473,3,older than 139,203,9999,9999,0,,"Plot is right near another land cover type, but lays on a Forest that did nor suffer disturbances. "
+209,isjaques@sig-gis.com,348,3,older than 140,209,9999,9999,0,,
+210,isjaques@sig-gis.com,454,3,older than 141,210,9999,9999,0,,Non-Forest
+211,isjaques@sig-gis.com,511,3,older than 142,211,9999,9999,0,,Non-Forest
+217,isjaques@sig-gis.com,400,3,older than 143,217,9999,9999,0,,
+219,isjaques@sig-gis.com,399,3,older than 144,219,9999,9999,0,,Non-Forest
+220,isjaques@sig-gis.com,354,3,older than 145,220,9999,9999,0,,
+222,isjaques@sig-gis.com,330,3,older than 146,222,9999,9999,0,,Non-Forest
+224,isjaques@sig-gis.com,460,3,older than 147,224,9999,9999,0,,
+225,isjaques@sig-gis.com,488,3,older than 148,225,9999,9999,0,,
+226,isjaques@sig-gis.com,412,3,older than 149,226,9999,9999,0,,Non-Forest
+227,isjaques@sig-gis.com,306,3,older than 150,227,9999,9999,0,,
+228,isjaques@sig-gis.com,535,3,older than 151,228,9999,9999,0,,
+230,isjaques@sig-gis.com,328,3,older than 152,230,9999,9999,0,,
+232,isjaques@sig-gis.com,537,3,older than 153,232,9999,9999,0,,
+236,isjaques@sig-gis.com,516,3,older than 154,236,9999,9999,0,,
+238,isjaques@sig-gis.com,514,3,older than 155,238,9999,9999,0,,Non-Forest
+246,isjaques@sig-gis.com,487,3,older than 156,246,9999,9999,0,,
+247,crystal.wespestad@gmail.com,401,3,older than 157,247,9999,9999,0,,thin line of trees along agriculture
+249,isjaques@sig-gis.com,352,3,older than 158,249,9999,9999,0,,
+251,isjaques@sig-gis.com,485,3,older than 159,251,9999,9999,0,,
+254,isjaques@sig-gis.com,304,3,older than 160,254,9999,9999,0,,
+257,isjaques@sig-gis.com,381,3,older than 161,257,9999,9999,0,,Non-Forest
+259,isjaques@sig-gis.com,448,3,older than 162,259,9999,9999,0,,
+261,isjaques@sig-gis.com,479,3,older than 163,261,9999,9999,0,,
+267,isjaques@sig-gis.com,512,3,older than 164,267,9999,9999,0,,"Forest disturbance by what seems to be selective logging, but with no complete loss of canopy, still Forest. "
+268,isjaques@sig-gis.com,509,3,older than 165,268,9999,9999,0,,
+269,isjaques@sig-gis.com,539,3,older than 166,269,9999,9999,0,,
+271,isjaques@sig-gis.com,463,3,older than 167,271,9999,9999,0,,
+272,isjaques@sig-gis.com,388,3,older than 168,272,9999,9999,0,,
+275,isjaques@sig-gis.com,390,3,older than 169,275,9999,9999,0,,"Selective logging, but still Forest. "
+277,isjaques@sig-gis.com,341,3,older than 170,277,9999,9999,0,,Plot close to the boundary between two different land covers. 
+303,tliu@sig-gis.com,464,3,older than 171,303,9999,9999,0,,no comments
+304,tliu@sig-gis.com,468,3,older than 172,304,9999,9999,0,,no comments
+308,tliu@sig-gis.com,389,3,older than 173,308,9999,9999,0,,edge sample; stable non-forest
+314,tliu@sig-gis.com,439,3,older than 174,314,9999,9999,0,,no comments
+322,isjaques@sig-gis.com,477,3,older than 175,322,9999,9999,0,,
+325,isjaques@sig-gis.com,355,3,older than 176,325,9999,9999,0,,
+326,crystal.wespestad@gmail.com,375,3,older than 177,326,9999,9999,0,,stable forest
+327,crystal.wespestad@gmail.com,444,3,older than 178,327,9999,9999,0,,"repetitive forest disturbances, long term selective logging"
+328,isjaques@sig-gis.com,544,3,older than 179,328,9999,9999,0,,
+331,isjaques@sig-gis.com,357,3,older than 180,331,9999,9999,0,,
+336,isjaques@sig-gis.com,335,3,older than 181,336,9999,9999,0,,
+339,isjaques@sig-gis.com,340,3,older than 182,339,9999,9999,0,,Non-Forest
+341,crystal.wespestad@gmail.com,483,3,older than 183,341,9999,9999,0,,"scattered trees in grass, never stable high NDVI"
+344,isjaques@sig-gis.com,470,3,older than 184,344,9999,9999,0,,
+345,isjaques@sig-gis.com,493,3,older than 185,345,9999,9999,0,,Non-Forest
+346,isjaques@sig-gis.com,434,3,older than 186,346,9999,9999,0,,Non-Forest
+349,tliu@sig-gis.com,441,3,older than 187,349,9999,9999,0,,possible forest degradation or loss around 2003
+351,crystal.wespestad@gmail.com,402,3,older than 188,351,9999,9999,0,,"edge pixel, some trees, along a river bank"
+352,isjaques@sig-gis.com,419,3,older than 189,352,9999,9999,0,,
+357,tliu@sig-gis.com,342,3,older than 190,357,9999,9999,0,,no comments
+359,isjaques@sig-gis.com,499,3,older than 191,359,9999,9999,0,,
+365,tliu@sig-gis.com,370,3,older than 192,365,9999,9999,0,,edge sample
+372,tliu@sig-gis.com,367,3,older than 193,372,9999,9999,0,,edge sample; near 2019 forest loss
+375,crystal.wespestad@gmail.com,395,3,older than 194,375,9999,9999,0,,severe periodic degradation from flooding
+379,crystal.wespestad@gmail.com,466,3,older than 195,379,9999,9999,0,,"chance these might be tall shrubs, but probably small trees"
+384,isjaques@sig-gis.com,371,3,older than 196,384,9999,9999,0,,"Seasonal changes in the forest characteristics, but no forest disturbance caused by humans. "
+389,isjaques@sig-gis.com,515,3,older than 197,389,9999,9999,0,,Non-Forest
+391,isjaques@sig-gis.com,472,3,older than 198,391,9999,9999,0,,
+396,tliu@sig-gis.com,322,3,older than 199,396,9999,9999,0,,no comments
+397,isjaques@sig-gis.com,502,3,older than 200,397,9999,9999,0,,
+399,isjaques@sig-gis.com,518,3,older than 201,399,9999,9999,0,,
+405,isjaques@sig-gis.com,428,3,older than 202,405,9999,9999,0,,Non-Forest
+407,isjaques@sig-gis.com,406,3,older than 203,407,9999,9999,0,,Dirt road
+411,tliu@sig-gis.com,315,3,older than 204,411,9999,9999,0,,no comments
+414,isjaques@sig-gis.com,362,3,older than 205,414,9999,9999,0,,
+415,isjaques@sig-gis.com,344,3,older than 206,415,9999,9999,0,,
+418,tliu@sig-gis.com,307,3,older than 207,418,9999,9999,0,,no comments
+419,tliu@sig-gis.com,481,3,older than 208,419,9999,9999,0,,no comments
+420,tliu@sig-gis.com,513,3,older than 209,420,9999,9999,0,,vegetation type before 2006 unclear; land might have turned to water in 2007
+426,isjaques@sig-gis.com,314,3,older than 210,426,9999,9999,0,,
+429,crystal.wespestad@gmail.com,548,3,older than 211,429,9999,9999,0,,"mixed sample, few trees on edge of agriculture"
+433,isjaques@sig-gis.com,321,3,older than 212,433,9999,9999,0,,
+435,crystal.wespestad@gmail.com,480,3,older than 213,435,9999,9999,0,,deciduous smaller tree forest
+438,isjaques@sig-gis.com,436,3,older than 214,438,9999,9999,0,,Non-Forest
+439,crystal.wespestad@gmail.com,364,3,older than 215,439,9999,9999,0,,"house lawn, trees nearby"
+441,crystal.wespestad@gmail.com,532,3,older than 216,441,9999,9999,0,,agriculture 
+442,isjaques@sig-gis.com,317,3,older than 217,442,9999,9999,0,,
+446,isjaques@sig-gis.com,492,3,older than 218,446,9999,9999,0,,Non-Forest. Scattered trees are present.
+448,isjaques@sig-gis.com,358,3,older than 219,448,9999,9999,0,,Non-Forest
+450,isjaques@sig-gis.com,527,3,older than 220,450,9999,9999,0,,
+455,isjaques@sig-gis.com,429,3,older than 221,455,9999,9999,0,,
+458,isjaques@sig-gis.com,534,3,older than 222,458,9999,9999,0,,Mixed lancovers
+459,isjaques@sig-gis.com,350,3,older than 223,459,9999,9999,0,,Edge sample
+466,isjaques@sig-gis.com,486,3,older than 224,466,9999,9999,0,,Edge sample
+467,isjaques@sig-gis.com,478,3,older than 225,467,9999,9999,0,,Non-Forest
+469,isjaques@sig-gis.com,519,3,older than 226,469,9999,9999,0,,Non-Forest
+476,isjaques@sig-gis.com,500,3,older than 227,476,9999,9999,0,,Edge sample
+477,isjaques@sig-gis.com,541,3,older than 228,477,9999,9999,0,,Non-Forest
+482,isjaques@sig-gis.com,387,3,older than 229,482,9999,9999,0,,
+487,isjaques@sig-gis.com,523,3,older than 230,487,9999,9999,0,,
+498,tliu@sig-gis.com,450,3,older than 231,498,9999,9999,0,,stable non-forest
+504,tliu@sig-gis.com,526,3,older than 232,504,9999,9999,0,,no comments
+507,tliu@sig-gis.com,451,3,older than 233,507,9999,9999,0,,edge sample; possible forest loss
+509,tliu@sig-gis.com,482,3,older than 234,509,9999,9999,0,,mixed landcover; stable non-forest and forest
+512,tliu@sig-gis.com,490,3,older than 235,512,9999,9999,0,,edge sample; possible forest degradation or loss in 2021
+514,tliu@sig-gis.com,522,3,older than 236,514,9999,9999,0,,no comments
+516,tliu@sig-gis.com,494,3,older than 237,516,9999,9999,0,,no comments
+517,tliu@sig-gis.com,308,3,older than 238,517,9999,9999,0,,edge sample
+521,tliu@sig-gis.com,347,3,older than 239,521,9999,9999,0,,possible forest gain around 1990
+522,tliu@sig-gis.com,325,3,older than 240,522,9999,9999,0,,mixed landcover
+523,tliu@sig-gis.com,533,3,older than 241,523,9999,9999,0,,edge sample
+526,tliu@sig-gis.com,496,3,older than 242,526,9999,9999,0,,stable non-forest
+528,tliu@sig-gis.com,305,3,older than 243,528,9999,9999,0,,no comments
+529,tliu@sig-gis.com,457,3,older than 244,529,9999,9999,0,,edge sample
+530,tliu@sig-gis.com,316,3,older than 245,530,9999,9999,0,,edge sample
+531,tliu@sig-gis.com,327,3,older than 246,531,9999,9999,0,,no comments
+532,tliu@sig-gis.com,415,3,older than 247,532,9999,9999,0,,no comments
+534,tliu@sig-gis.com,432,3,older than 248,534,9999,9999,0,,stable non-forest
+536,tliu@sig-gis.com,404,3,older than 249,536,9999,9999,0,,no comments
+538,tliu@sig-gis.com,334,3,older than 250,538,9999,9999,0,,possible forest gain and loss from 1990 to 1998
+542,tliu@sig-gis.com,459,3,older than 251,542,9999,9999,0,,no comments
+548,tliu@sig-gis.com,349,3,older than 252,548,9999,9999,0,,edge sample
+434,jdilger@sig-gis.com,442,3,older than 253,434,,1993,1993,1,Hard to tell if this is a deciduous plot or not.  
+316,jdilger@sig-gis.com,331,3,older than 254,316,,2010,2010,1,Looks like natural regeneration. On corner of non forest.
+489,jdilger@sig-gis.com,359,3,older than 255,489,,2018,2018,1,On edge of forest conversion could see this as non-forest or forest.
+285,jdilger@sig-gis.com,15,1,non forest,285,,,0,,
+493,jdilger@sig-gis.com,35,1,non forest,493,,,0,,water
+480,jdilger@sig-gis.com,83,2,less than 20 yrs,480,,,0,,"Looks like shrublands. Poor imagery in GE,GEE, bing, and mapbox. "
+495,jdilger@sig-gis.com,123,2,less than 20 yrs,495,,,0,,sample lands on road surrounded by forest.  Technically > 30% CC. ndfi shows a disturbance ~2018 when other side of the road was clear cut
+178,jdilger@sig-gis.com,547,3,older than 256,178,,,0,,looks younger in mapbox base image than compared to bing maps.. time series doesn't show much change. Wider variation in ndfi ~2005 but clicking on images still looks like forest in landsat. 
+273,jdilger@sig-gis.com,424,3,older than 257,273,,,0,,On the edge of non forest plot. Looks like it's been non forest since 1985.
+279,jdilger@sig-gis.com,313,3,older than 258,279,,,0,,
+281,jdilger@sig-gis.com,343,3,older than 259,281,,,0,,
+284,jdilger@sig-gis.com,474,3,older than 260,284,,,0,,
+287,jdilger@sig-gis.com,394,3,older than 261,287,,,0,,This land directly on a road between a patch of stable forest and a forest that was clear cut in 2016
+290,jdilger@sig-gis.com,365,3,older than 262,290,,,0,,This is a bog or wetland.
+291,jdilger@sig-gis.com,447,3,older than 263,291,,,0,,Edge pixel of stable forest and non forest.
+292,jdilger@sig-gis.com,384,3,older than 264,292,,,0,,
+295,jdilger@sig-gis.com,505,3,older than 265,295,,,0,,
+310,jdilger@sig-gis.com,423,3,older than 266,310,,,0,,
+317,jdilger@sig-gis.com,435,3,older than 267,317,,,0,,On  dirt road between two forests.
+492,jdilger@sig-gis.com,525,3,older than 268,492,,,0,,
+494,jdilger@sig-gis.com,508,3,older than 269,494,,,0,,~30% cc but is edge of forest and riverbed. 
+496,jdilger@sig-gis.com,318,3,older than 270,496,,,0,,"Looks like stable forest. Is o edge of younger forest, but trend doesn't appear  in ndfi time series "
