@@ -3,14 +3,15 @@ library(survey)
 library(tidyverse)
 library(knitr)
 library(rmarkdown)
-library(tidyr) 
+library(tidyr)
 library(networkD3)
 library(tidyverse)
 library(dplyr)
 library(scales)
 library(lubridate)
 
-setwd("C:\\Users\\karis\\Documents\\SBP\\AreaEstimation")
+# setwd("C:\\Users\\karis\\Documents\\SBP\\AreaEstimation")
+setwd("~/Desktop/SIG/PC382_SBP/uncertainty_estimation/SBP_uncertainty")
 
 #dataCEOYR <- read.csv('ceo-Estonia_SBP_carbonmonitoring_upto2021_v2-plot-data-2022-04-07 (1).csv')
 dataCEOYR <- read.csv('ceo-Estonia_SBP_carbonmonitoring_upto2021_v2-plot-data-2022-05-20.csv')
@@ -23,9 +24,11 @@ dataGEE <- read.csv('ceo-Estonia-SBP-standage-80.csv')
 head(dataGEE)
 colnames(dataGEE)
 #Land.Cover.in.2021.
-colnames(dataGEE)[34]<-'Loss90_98'
-colnames(dataGEE)[35]<-'Loss99_21'
-colnames(dataGEE)[36]<-'LC2021'
+colnames(dataGEE)[34]<-'Loss90_98'  # "Forest.loss.1990.1998."
+# [35] "Forest.loss.1999.2021."                      "Land.Cover.in.2021."
+# [37] "NonForest.to.Forest.conversion..1990.1998.." "NonForest.to.Forest.conversion..1999.2021.."
+colnames(dataGEE)[35]<-'Loss99_ 21'  # T/F
+colnames(dataGEE)[36]<-'LC2021'  # "Forest"     "Non-Forest"
 colnames(dataGEE)[37]<-'Gain90_98'
 colnames(dataGEE)[38]<-'Gain99_21'
 dataGEE<-dataGEE[,c(48, 49, 42:43, 34:39, 2:33)]
@@ -47,26 +50,26 @@ colnames(dataCEOYR)[30] <- 'notes'
 
 dataCEOYR$YrLossCEO[is.na(dataCEOYR$YrLossCEO)] <- 9999
 
-#dataall<- merge(dataGEE, dataCEOYR[,c(7,16, 17, 18, 24,29)], 
+#dataall<- merge(dataGEE, dataCEOYR[,c(7,16, 17, 18, 24,29)],
 #                by.x = c('pl_sampleid', 'email'), by.y = c('pl_sampleid', 'email'))
 #dataall[,43]==dataall[,3]
 
 ## remove extra strata
-dataall<- merge(dataGEE, dataCEOYR[,c(7, 17, 18, 24,29)], 
+dataall<- merge(dataGEE, dataCEOYR[,c(7, 17, 18, 24,29)],
                 by.x = c('pl_sampleid', 'email'), by.y = c('pl_sampleid', 'email'))
-colnames(dataall)
+colnames(dataall)  # "LC_forest_2021CEO""YrLossCEO""YrGainCEO" from dataCEOYR
 
 
 dataStrata <- read.csv('stratav0_4326_100m.csv')
 head(dataStrata)
 dataStrata[,c(2, 4, 5)]
-dataStrata[5]<-'strataName'
+dataStrata[5]<-'strataName'  # readable column now filled with 'strataName'
 
 ## Merge data
 #CEO has pl_strata
 dataSBP<- merge(dataall, dataStrata[c(2, 4, 5)], by.x= 'pl_strata', by.y = 'map_value', all.x = T)
 head(dataSBP)
-colnames(dataSBP)
+colnames(dataSBP)  # count, readable from dataStrata
 rm(dataCEOYR, dataall, dataGEE, dataStrata)
 
 ##################################
@@ -77,9 +80,9 @@ rm(dataCEOYR, dataall, dataGEE, dataStrata)
 CEOStandAge <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 CEOStandAge[, 1] <- rep(0, length(dataSBP$LC_forest_2021CEO))
 
-CEOStandAge[dataSBP$LC_forest_2021CEO ==100, 1] <- MaxAge
+CEOStandAge[dataSBP$LC_forest_2021CEO ==100, 1] <- MaxAge  # LC_forest_2021CEO either 0 or 100
 CEOStandAge[dataSBP$YrLossCEO<9999, 1] = 2021 - dataSBP$YrLossCEO[dataSBP$YrLossCEO<9999]
-colnames(CEOStandAge)[1] <- 'carbon2021'
+colnames(CEOStandAge)[1] <- 'carbon2021'  # MaxAge or no. of years before 2021
 ##CEO stand age calcs
 for (i in 2:32){
   prev <- i - 1
@@ -87,7 +90,7 @@ for (i in 2:32){
   CEOStandAge[CEOStandAge[,prev]==0,i] <-0
   colnames(CEOStandAge)[i] <- paste0('carbon', 2022-i)
 }
-
+CEOStandAge %>% tail()
 
 MaxAge<-80
 
@@ -131,7 +134,7 @@ for (i in 1:32){
 b0 <- 72.20785
 b1 <- 0.066939
 b2 <- 2.231247
-### CI upper 
+### CI upper
 b0up <- 83.6653
 b1up <- 0.048341
 b2up <- 1.286441
@@ -256,11 +259,11 @@ data <- data %>%
 ggplot(data, aes(fill= phase, x = Strata, y = Area )) +
   geom_bar(position="dodge", stat="identity", alpha=1) +
   geom_errorbar(aes(ymin = Area - SE, ymax = Area + SE),
-                width = 0.2, colour = "black", 
+                width = 0.2, colour = "black",
                 position = position_dodge(.9)) +
-  geom_text(aes(label = Arealab, y = label_error), position = position_dodge(.9), 
+  geom_text(aes(label = Arealab, y = label_error), position = position_dodge(.9),
             vjust = -2.5, colour = "black", size=3)+
-  geom_text(aes(label = SElab, y = label_error), position = position_dodge(.9), 
+  geom_text(aes(label = SElab, y = label_error), position = position_dodge(.9),
             vjust = -1, colour="black", size=3) +
   xlab('LU activities') + # for the x axis label
   ylab('Area, ha') + scale_y_continuous(labels = comma)
