@@ -13,18 +13,21 @@ library(lubridate)
 # setwd("C:\\Users\\karis\\Documents\\SBP\\AreaEstimation")
 setwd("~/Desktop/SIG/PC382_SBP/uncertainty_estimation/SBP_uncertainty")
 
+# preprocess data ####
+## read in CEO data ####
 #dataCEOYR <- read.csv('ceo-Estonia_SBP_carbonmonitoring_upto2021_v2-plot-data-2022-04-07 (1).csv')
 dataCEOYR <- read.csv('ceo-Estonia_SBP_carbonmonitoring_upto2021_v2-plot-data-2022-05-20.csv')
 head(dataCEOYR)
 colnames(dataCEOYR)
 dataCEOYR$pl_oldid
 
+## read in and prep GEE data ####
 #dataCEO <- read.csv('ceo-Estonia_SBP_carbonmonitoring_upto2021_v2-sample-data-2022-03-14_modified_30m_and_100m.csv')
 dataGEE <- read.csv('ceo-Estonia-SBP-standage-80.csv')
-head(dataGEE)
+head(dataGEE,2)
 colnames(dataGEE)
 #Land.Cover.in.2021.
-colnames(dataGEE)[34]<-'Loss90_98'  # "Forest.loss.1990.1998."
+colnames(dataGEE)[34]<-'Loss90_98'  # "Forest.loss.1990.1998." T/F
 # [35] "Forest.loss.1999.2021."                      "Land.Cover.in.2021."
 # [37] "NonForest.to.Forest.conversion..1990.1998.." "NonForest.to.Forest.conversion..1999.2021.."
 colnames(dataGEE)[35]<-'Loss99_ 21'  # T/F
@@ -35,17 +38,17 @@ dataGEE<-dataGEE[,c(48, 49, 42:43, 34:39, 2:33)]
 colnames(dataGEE)
 head(dataGEE)
 
-### Prepare data for merging
+## Prepare CEO data for merging with GEE data ####
 colnames(dataCEOYR[,c(7, 16, 17,18, 24,29)])
 colnames(dataCEOYR)[16]
-colnames(dataCEOYR)[18]<-'LC_forest_2021CEO'
-colnames(dataCEOYR)[19]<-'LC_nonforest_2021'
-colnames(dataCEOYR)[20]<-'Forest_Loss_99_21'
+colnames(dataCEOYR)[18]<-'LC_forest_2021CEO'  # 0 or 100
+colnames(dataCEOYR)[19]<-'LC_nonforest_2021'  # 100 - LC_forest_2021CEO
+colnames(dataCEOYR)[20]<-'Forest_Loss_99_21'  # 0 or 100
 colnames(dataCEOYR)[25]<-'Forest_Gain_99_21'
 colnames(dataCEOYR)[22]<-'Forest_Loss_90_98'
 colnames(dataCEOYR)[27]<-'Forest_Gain_90_98'
-colnames(dataCEOYR)[24]<-'YrLossCEO'
-colnames(dataCEOYR)[29]<-'YrGainCEO'
+colnames(dataCEOYR)[24]<-'YrLossCEO'  # yyyy 9999 or NA
+colnames(dataCEOYR)[29]<-'YrGainCEO'  # yyyy 9999 or NA
 colnames(dataCEOYR)[30] <- 'notes'
 
 dataCEOYR$YrLossCEO[is.na(dataCEOYR$YrLossCEO)] <- 9999
@@ -54,18 +57,19 @@ dataCEOYR$YrLossCEO[is.na(dataCEOYR$YrLossCEO)] <- 9999
 #                by.x = c('pl_sampleid', 'email'), by.y = c('pl_sampleid', 'email'))
 #dataall[,43]==dataall[,3]
 
-## remove extra strata
+## merge GEE & CEO data, remove extra strata ####
 dataall<- merge(dataGEE, dataCEOYR[,c(7, 17, 18, 24,29)],
                 by.x = c('pl_sampleid', 'email'), by.y = c('pl_sampleid', 'email'))
 colnames(dataall)  # "LC_forest_2021CEO""YrLossCEO""YrGainCEO" from dataCEOYR
 
-
+## read in and prep strata pixel-count data ####
 dataStrata <- read.csv('stratav0_4326_100m.csv')
 head(dataStrata)
 dataStrata[,c(2, 4, 5)]
 dataStrata[5]<-'strataName'  # readable column now filled with 'strataName'
+# readable column used to non forest, forest less than 20years old, forest greater than 20 years old
 
-## Merge data
+## Merge strata pixel-count data with CEO-GEE-combo data ####
 #CEO has pl_strata
 dataSBP<- merge(dataall, dataStrata[c(2, 4, 5)], by.x= 'pl_strata', by.y = 'map_value', all.x = T)
 head(dataSBP)
@@ -75,10 +79,13 @@ rm(dataCEOYR, dataall, dataGEE, dataStrata)
 ##################################
 #############################
 
+## calc stand age ####
 ## 'YrLossCEO', 'YrGainCEO'
 ##CEO stand age calcs
 CEOStandAge <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 CEOStandAge[, 1] <- rep(0, length(dataSBP$LC_forest_2021CEO))
+
+MaxAge<-80
 
 CEOStandAge[dataSBP$LC_forest_2021CEO ==100, 1] <- MaxAge  # LC_forest_2021CEO either 0 or 100
 CEOStandAge[dataSBP$YrLossCEO<9999, 1] = 2021 - dataSBP$YrLossCEO[dataSBP$YrLossCEO<9999]
@@ -92,8 +99,7 @@ for (i in 2:32){
 }
 CEOStandAge %>% tail()
 
-MaxAge<-80
-
+## estimate carbon ####
 ### planted conifer, excluding pine in Europe ######
 b0 <- 156.968
 b1 <- 0.064457
@@ -129,8 +135,8 @@ for (i in 1:32){
 }
 
 
-#############################
-### nat regen forest europe:
+#################################
+### nat regen forest europe: ####
 b0 <- 72.20785
 b1 <- 0.066939
 b2 <- 2.231247
@@ -171,7 +177,7 @@ CarbonNatReg <- cbind(dataSBP, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup)
 rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcarbonCON, CEOcarbonCONlow, CEOcarbonCONup)
 
 ##################################
-## Area weighted estimates
+## Area weighted estimates ####
 colnames(CarbonCon)
 CarbonCon$pl_strata
 CarbonCon$count
@@ -213,7 +219,7 @@ as.matrix(as.data.frame(svytotal(~carbon1992CON, strat_design))),
 as.matrix(as.data.frame(svytotal(~carbon1991CON, strat_design))),
 as.matrix(as.data.frame(svytotal(~carbon1990CON, strat_design))))
 
-C_ConEst <- C_ConEst * 0.09
+C_ConEst <- C_ConEst * 0.09  # 30*30/10000 pixel to ha
 
 C_ConEst <- cbind(Year, C_ConEst)
 colnames(C_ConEst)[3]<-'SE'
