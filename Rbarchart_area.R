@@ -86,7 +86,7 @@ CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
                                  nrow = length(dataSBP$LC_forest_2021CEO)))
 colnames(CEOStandAge) <- 2021:1990
 
-MaxAge<-40
+MaxAge<-80
 
 #### preprocess CEO info in dataSBP ####
 # add loss & gain event T/F indicators
@@ -98,7 +98,8 @@ dataSBP$LossThenGain <- dataSBP$YrGainCEO > dataSBP$YrLossCEO
 dataSBP$GainThenLoss <- dataSBP$YrGainCEO < dataSBP$YrLossCEO
 
 #### filling stand age into CEOStandAge ####
-# returns a vector of stand ages from 2021 to 1990
+
+# calc_stand_age_21_90 returns a vector of stand ages from 2021 to 1990
 # #MaxAge is the assumed stand age before a year of loss when the year of gain
 # is unknown
 # #special treatment if loss then gain: assume gain happened 1 year after loss,
@@ -213,6 +214,19 @@ for (r in 1:nrow(dataSBP)) {
 view(CEOStandAge)
 # write.csv(CEOStandAge, file='results/stand_age_40_147ddc5_Gain1YrAfterLossIfLossThenGain.csv')
 
+#### compare with John's stand age and carbon by year ####
+# Carbon assumes a forest start age of 80 and is for natural regeneration
+age_carbon_df <- read.csv('../ceo-samples-standage-carbon.csv')
+age_df <- age_carbon_df[, grepl('standAge', colnames(age_carbon_df))]
+age_df <- cbind(age_carbon_df$sampleid, age_df)
+carbon_df <- age_carbon_df[, grepl('carbon', colnames(age_carbon_df))]
+carbon_df <- cbind(age_carbon_df$sampleid, carbon_df)
+view(age_df[order(age_df[,1]),
+            order(colnames(age_df), decreasing = T)])
+view(CEOStandAge[order(dataSBP$pl_sampleid), ])
+carbon_df_ord <- carbon_df[order(carbon_df[,1]),
+                           order(colnames(carbon_df), decreasing = T)]
+view(carbon_df_ord)  # compare with CEOcarbonNReg below
 
 ## estimate carbon ####
 ### planted conifer, excluding pine in Europe ######
@@ -289,12 +303,19 @@ for (i in 1:32){
 CarbonCon <- cbind(dataSBP, CEOcarbonCON, CEOcarbonCONlow, CEOcarbonCONup)
 CarbonNatReg <- cbind(dataSBP, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup)
 
+view(round(CEOcarbonNReg[order(dataSBP$pl_sampleid), ],2))
+
 rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcarbonCON, CEOcarbonCONlow, CEOcarbonCONup)
 
 ##################################
 # Area weighted estimates ####
 ### select data of interest - carbon estimate and ci ####
+
 C_est_ci_df <- CarbonCon
+forest_type <- 'CON'
+
+C_est_ci_df <- CarbonNatReg
+forest_type <- 'NReg'
 
 ### survey design ####
 strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count,
@@ -303,11 +324,10 @@ strat_design
 
 ### confidence intervals on ####
 C_est_ci_df <- data.frame()
-# type <- 'NReg'
-type <- 'CON'
+
 for (yyyy in 1990:2021) {
   # estimate
-  svy_tot <- svytotal(as.formula(paste0('~carbon',as.character(yyyy),type)),
+  svy_tot <- svytotal(as.formula(paste0('~carbon',as.character(yyyy),forest_type)),
                       strat_design)
   # 95% ci limits
   ci <- confint(svy_tot)
@@ -324,7 +344,7 @@ ggplot(C_est_ci_df) +
   geom_bar( aes(x=year, y=total), stat="identity", fill="skyblue", alpha=0.5) +
   geom_crossbar( aes(x=year, y=total, ymin=lower, ymax=upper), width=0.4, colour="orange", alpha=0.9, size=1.3) +
   ylab('Carbon (ton)') +
-  ggtitle(paste(type, MaxAge))
+  ggtitle(paste(forest_type, MaxAge))
 
 ### estimate, SE, CI for each stand age ####
 svyby(~carbon2021CON, by=~carbon2021CON, strat_design, svytotal)  # replace
