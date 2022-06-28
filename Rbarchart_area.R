@@ -86,7 +86,7 @@ CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
                                  nrow = length(dataSBP$LC_forest_2021CEO)))
 colnames(CEOStandAge) <- 2021:1990
 
-MaxAge<-80
+MaxAge<-40
 
 #### preprocess CEO info in dataSBP ####
 # add loss & gain event T/F indicators
@@ -222,21 +222,21 @@ b2low <- 4.068786
 ##CEO carbon calcs
 CEOcarbonCON <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonCON[,i] <- b0 * (1-exp(-b1 * CEOStandAge[i]) )^b2
+  CEOcarbonCON[,i] <- b0 * (1-exp(-b1 * CEOStandAge[i]) )^b2 * 0.09  # tons ( 1pix * 0.09ha/pix * xxx tonC/ha )
   colnames(CEOcarbonCON)[i] <- paste0('carbon', 2022-i, 'CON')
 }
 
 ##CEO carbon calcs
 CEOcarbonCONup <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonCONup[,i] <- b0up * (1-exp(-b1up * CEOStandAge[i]) )^b2up
+  CEOcarbonCONup[,i] <- b0up * (1-exp(-b1up * CEOStandAge[i]) )^b2up * 0.09
   colnames(CEOcarbonCONup)[i] <- paste0('carbon', 2022-i, 'CONup')
 }
 
 ##CEO carbon calcs
 CEOcarbonCONlow <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonCONlow[,i] <- b0low * (1-exp(-b1low * CEOStandAge[i]) )^b2low
+  CEOcarbonCONlow[,i] <- b0low * (1-exp(-b1low * CEOStandAge[i]) )^b2low * 0.09
   colnames(CEOcarbonCONlow)[i] <- paste0('carbon', 2022-i, 'CONlow')
 }
 
@@ -259,21 +259,21 @@ b2low <- 4.068786
 ##CEO carbon calcs
 CEOcarbonNReg <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonNReg[,i] <- b0 * (1-exp(-b1 * CEOStandAge[i]) )^b2
+  CEOcarbonNReg[,i] <- b0 * (1-exp(-b1 * CEOStandAge[i]) )^b2 * 0.09
   colnames(CEOcarbonNReg)[i] <- paste0('carbon', 2022-i, 'NReg')
 }
 
 ##CEO carbon calcs
 CEOcarbonNRegup <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonNRegup[,i] <- b0up * (1-exp(-b1up * CEOStandAge[i]) )^b2up
+  CEOcarbonNRegup[,i] <- b0up * (1-exp(-b1up * CEOStandAge[i]) )^b2up * 0.09
   colnames(CEOcarbonNRegup)[i] <- paste0('carbon', 2022-i, 'NRegup')
 }
 
 ##CEO carbon calcs
 CEOcarbonNReglow <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
 for (i in 1:32){
-  CEOcarbonNReglow[,i] <- b0low * (1-exp(-b1low * CEOStandAge[i]) )^b2low
+  CEOcarbonNReglow[,i] <- b0low * (1-exp(-b1low * CEOStandAge[i]) )^b2low * 0.09
   colnames(CEOcarbonNReglow)[i] <- paste0('carbon', 2022-i, 'NReglow')
 }
 
@@ -284,55 +284,49 @@ rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcar
 
 ##################################
 # Area weighted estimates ####
+### survey design ####
 colnames(CarbonCon)
 CarbonCon$pl_strata
 CarbonCon$count
 strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count, data = CarbonCon)
+strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count, data = CarbonNatReg)
 strat_design
 
-Year<-seq(from= 2021, to = 1990)
+### confidence intervals ####
+C_est_ci_df <- data.frame()
+# type <- 'NReg'
+type <- 'CON'
+for (yyyy in 1990:2021) {
+  # estimate
+  svy_tot <- svytotal(as.formula(paste0('~carbon',as.character(yyyy),type)),
+                      strat_design)
+  # 95% ci limits
+  ci <- confint(svy_tot)
+  C_est_ci_yyyy <- cbind(coef(svy_tot), ci)
+  C_est_ci_df <- rbind(C_est_ci_df, C_est_ci_yyyy)
+}
+C_est_ci_df
+C_est_ci_df <- cbind(1990:2021, C_est_ci_df)
+colnames(C_est_ci_df) <- c('year', 'total', 'lower', 'upper')
+# write.csv(C_est_ci_df, file = 'results/coniferCarbonEst_40.csv')
 
-C_ConEst<- rbind(as.matrix(as.data.frame(svytotal(~carbon2021CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2020CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2019CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2018CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2017CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2016CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2015CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2014CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2013CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2012CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2011CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2010CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2009CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2008CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2007CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2006CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2005CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2004CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2003CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2002CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2001CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon2000CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1999CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1998CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1997CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1996CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1995CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1994CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1993CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1992CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1991CON, strat_design))),
-as.matrix(as.data.frame(svytotal(~carbon1990CON, strat_design))))
+### plot ####
+ggplot(C_est_ci_df) +
+  geom_bar( aes(x=year, y=total), stat="identity", fill="skyblue", alpha=0.5) +
+  geom_crossbar( aes(x=year, y=total, ymin=lower, ymax=upper), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  ylab('Carbon (ton)') +
+  ggtitle('conifer, 40')
 
-C_ConEst <- C_ConEst * 0.09  # 30*30/10000 pixel to ha
+### estimate, SE, CI for each stand age ####
+svyby(~carbon2021CON, by=~carbon2021CON, strat_design, svytotal)  # replace
+# the second carbon2021CON with stand age, should get same result
 
-C_ConEst <- cbind(Year, C_ConEst)
-colnames(C_ConEst)[3]<-'SE'
 
-C_ConEst
-# write.csv(C_ConEst, file = 'results\\coniferCarbonEst.csv')
-# write.csv(C_ConEst, file = 'results/coniferCarbonEst_40.csv')
+
+
+
+
+
 
 # scratch ####
 ## Richard Chapman func / growth formula ####
