@@ -177,7 +177,7 @@ CarbonNatReg <- cbind(dataSBP, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup)
 rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcarbonCON, CEOcarbonCONlow, CEOcarbonCONup)
 
 ##################################
-## Area weighted estimates ####
+# Area weighted estimates ####
 colnames(CarbonCon)
 CarbonCon$pl_strata
 CarbonCon$count
@@ -224,7 +224,73 @@ C_ConEst <- C_ConEst * 0.09  # 30*30/10000 pixel to ha
 C_ConEst <- cbind(Year, C_ConEst)
 colnames(C_ConEst)[3]<-'SE'
 
-write.csv(C_ConEst, file = 'results\\coniferCarbonEst.csv')
+C_ConEst
+# write.csv(C_ConEst, file = 'results\\coniferCarbonEst.csv')
+# write.csv(C_ConEst, file = 'results/coniferCarbonEst_40.csv')
+
+# scratch ####
+## Richard Chapman func / growth formula ####
+### planted conifer, excluding pine in Europe ####
+b0 <- 156.968
+b1 <- 0.064457
+b2 <- 3.946418
+###  CI upper:
+b0up <- 83.6653
+b1up <- 0.048341
+b2up <- 1.286441
+###  CI lower:
+b0low <- 62.1984
+b1low <- 0.086366
+b2low <- 4.068786
+estimate_carbon <- function(stand_age) {
+  return(b0 * (1-exp(-b1 * stand_age) )^b2)
+}
+estimate_carbon_low <- function(stand_age) {
+  return(b0low * (1-exp(-b1low * stand_age) )^b2low)
+}
+estimate_carbon_up <- function(stand_age) {
+  return(b0up * (1-exp(-b1up * stand_age) )^b2up)
+}
+stand_age_vec <- 1:150
+Cest_vec <- estimate_carbon(stand_age_vec)
+
+plot(stand_age_vec, Cest_vec, type='l', col='black',
+     ylim=c(0,300), main='planted conifer, excluding pine in Europe')
+lines(stand_age_vec, estimate_carbon_low(stand_age_vec), col='blue')
+lines(stand_age_vec, estimate_carbon_up(stand_age_vec), col='purple')
+legend('topright', legend=c('estimate','lower CI','upper CI'),
+       col=c('black', 'blue', 'purple'), lty=1)
+
+### nat regen forest europe: ####
+b0 <- 72.20785
+b1 <- 0.066939
+b2 <- 2.231247
+### CI upper
+b0up <- 83.6653
+b1up <- 0.048341
+b2up <- 1.286441
+### CI lower:
+b0low <- 62.1984
+b1low <- 0.086366
+b2low <- 4.068786
+estimate_carbon <- function(stand_age) {
+  return(b0 * (1-exp(-b1 * stand_age) )^b2)
+}
+estimate_carbon_low <- function(stand_age) {
+  return(b0low * (1-exp(-b1low * stand_age) )^b2low)
+}
+estimate_carbon_up <- function(stand_age) {
+  return(b0up * (1-exp(-b1up * stand_age) )^b2up)
+}
+stand_age_vec <- 1:150
+Cest_vec <- estimate_carbon(stand_age_vec)
+
+plot(stand_age_vec, Cest_vec, type='l', col='black',
+     ylim=c(0,300), main='nat regen in Europe')
+lines(stand_age_vec, estimate_carbon_low(stand_age_vec), col='blue')
+lines(stand_age_vec, estimate_carbon_up(stand_age_vec), col='purple')
+legend('topright', legend=c('estimate','lower CI','upper CI'),
+       col=c('black', 'blue', 'purple'), lty=1)
 
 ##################################
 ## OLD CODE
