@@ -99,8 +99,10 @@ dataSBP$GainThenLoss <- dataSBP$YrGainCEO < dataSBP$YrLossCEO
 
 #### filling stand age into CEOStandAge ####
 # returns a vector of stand ages from 2021 to 1990
-# MaxAge is the assumed stand age before a year of loss when the year of gain
+# #MaxAge is the assumed stand age before a year of loss when the year of gain
 # is unknown
+# #special treatment if loss then gain: assume gain happened 1 year after loss,
+# because gain has likely become detectable late
 calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
   is_forest_2021 <- CEOinfo$LC_forest_2021CEO
   yr_loss <- CEOinfo$YrLossCEO
@@ -131,6 +133,8 @@ calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
       if (loss_then_gain) {
         print('not possible 2')
         # assume is_forest_2021
+        # assume yr_gain to be 1 year after yr_loss
+        yr_gain <- yr_loss + 1
         stand_age_since_gain <- 1:(2021-yr_gain+1)
         stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
         stand_age_seed_loss <- 0:MaxAge
@@ -182,6 +186,8 @@ calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
         return(rev(stand_age_bc_21)[1:32])
 
       } else if (loss_then_gain) {
+        # assume yr_gain to be 1 year after yr_loss
+        yr_gain <- yr_loss + 1
         stand_age_since_gain <- 1:(2021-yr_gain+1)
         stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
         stand_age_seed_loss <- 0:MaxAge
@@ -197,6 +203,7 @@ calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
 
 }
 
+
 for (r in 1:nrow(dataSBP)) {
   # print(r)
   CEOinfo <- dataSBP[r, c('LC_forest_2021CEO','YrLossCEO','YrGainCEO',
@@ -204,6 +211,8 @@ for (r in 1:nrow(dataSBP)) {
   CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, MaxAge)
 }
 view(CEOStandAge)
+# write.csv(CEOStandAge, file='results/stand_age_40_147ddc5_Gain1YrAfterLossIfLossThenGain.csv')
+
 
 ## estimate carbon ####
 ### planted conifer, excluding pine in Europe ######
@@ -284,15 +293,15 @@ rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcar
 
 ##################################
 # Area weighted estimates ####
+### select data of interest - carbon estimate and ci ####
+C_est_ci_df <- CarbonCon
+
 ### survey design ####
-colnames(CarbonCon)
-CarbonCon$pl_strata
-CarbonCon$count
-strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count, data = CarbonCon)
-strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count, data = CarbonNatReg)
+strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count,
+                          data = C_est_ci_df)
 strat_design
 
-### confidence intervals ####
+### confidence intervals on ####
 C_est_ci_df <- data.frame()
 # type <- 'NReg'
 type <- 'CON'
@@ -315,7 +324,7 @@ ggplot(C_est_ci_df) +
   geom_bar( aes(x=year, y=total), stat="identity", fill="skyblue", alpha=0.5) +
   geom_crossbar( aes(x=year, y=total, ymin=lower, ymax=upper), width=0.4, colour="orange", alpha=0.9, size=1.3) +
   ylab('Carbon (ton)') +
-  ggtitle('conifer, 40')
+  ggtitle(paste(type, MaxAge))
 
 ### estimate, SE, CI for each stand age ####
 svyby(~carbon2021CON, by=~carbon2021CON, strat_design, svytotal)  # replace
@@ -335,13 +344,13 @@ b0 <- 156.968
 b1 <- 0.064457
 b2 <- 3.946418
 ###  CI upper:
-b0up <- 83.6653
-b1up <- 0.048341
-b2up <- 1.286441
+b0up <- 177.1787
+b1up <- 0.047689
+b2up <- 2.00096
 ###  CI lower:
-b0low <- 62.1984
-b1low <- 0.086366
-b2low <- 4.068786
+b0low <- 138.3733
+b1low <- 0.080944
+b2low <- 8.37114
 estimate_carbon <- function(stand_age) {
   return(b0 * (1-exp(-b1 * stand_age) )^b2)
 }
@@ -396,6 +405,7 @@ legend('topright', legend=c('estimate','lower CI','upper CI'),
 CEOinfo <- dataSBP[, c('LC_forest_2021CEO', 'YrLossCEO', 'YrGainCEO')]
 # forest in 2021? year of most recent loss? year of most recent gain?
 
+
 ### check out CEOinfo: what are all the possible forest gain loss event ####
 ### series to deal with ####
 # add event T/F indicators
@@ -422,6 +432,13 @@ CEOinfo_both[, c('LC_forest_2021CEO', 'LossThenGain', 'GainThenLoss')] %>%
 # shouldn't have 0,T,F (loss then gain, but non-forest in 2021) - but 4 plots
 # have the combo, TO-THINK about what to do with them
 
+# plots with loss then gain
+dataLossThenGain <- dataSBP[(dataSBP$HasLoss & dataSBP$HasGain & dataSBP$LossThenGain), ]
+dataLossThenGain %>% dim()  # 61 plots!
+(dataLossThenGain$YrGainCEO - dataLossThenGain$YrLossCEO) %>% table()
+# gain event can happen 1-20 years after loss event
+# will set YrGain to 1 year after YrLoss in these situations
+
 ### convert CEO info to stand age ####
 # goal: fill this df w/ stand ages (a row for each plot)
 CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
@@ -446,6 +463,8 @@ dataSBP$GainThenLoss <- dataSBP$YrGainCEO < dataSBP$YrLossCEO
 # returns a vector of stand ages from 2021 to 1990
 # MaxAge is the assumed stand age before a year of loss when the year of gain
 # is unknown
+# #special treatment if loss then gain: assume gain happened 1 year after loss,
+# because gain has likely become detectable late
 calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
   is_forest_2021 <- CEOinfo$LC_forest_2021CEO
   yr_loss <- CEOinfo$YrLossCEO
@@ -476,6 +495,8 @@ calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
       if (loss_then_gain) {
         print('not possible 2')
         # assume is_forest_2021
+        # assume yr_gain to be 1 year after yr_loss
+        yr_gain <- yr_loss + 1
         stand_age_since_gain <- 1:(2021-yr_gain+1)
         stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
         stand_age_seed_loss <- 0:MaxAge
@@ -527,6 +548,8 @@ calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
         return(rev(stand_age_bc_21)[1:32])
 
       } else if (loss_then_gain) {
+        # assume yr_gain to be 1 year after yr_loss
+        yr_gain <- yr_loss + 1
         stand_age_since_gain <- 1:(2021-yr_gain+1)
         stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
         stand_age_seed_loss <- 0:MaxAge
