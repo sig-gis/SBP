@@ -52,6 +52,7 @@ colnames(dataCEOYR)[29]<-'YrGainCEO'  # yyyy 9999 or NA
 colnames(dataCEOYR)[30] <- 'notes'
 
 dataCEOYR$YrLossCEO[is.na(dataCEOYR$YrLossCEO)] <- 9999
+dataCEOYR$YrGainCEO[is.na(dataCEOYR$YrGainCEO)] <- 9999
 
 #dataall<- merge(dataGEE, dataCEOYR[,c(7,16, 17, 18, 24,29)],
 #                by.x = c('pl_sampleid', 'email'), by.y = c('pl_sampleid', 'email'))
@@ -79,25 +80,130 @@ rm(dataCEOYR, dataall, dataGEE, dataStrata)
 ##################################
 #############################
 
-## calc stand age ####
-## 'YrLossCEO', 'YrGainCEO'
-##CEO stand age calcs
-CEOStandAge <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
-CEOStandAge[, 1] <- rep(0, length(dataSBP$LC_forest_2021CEO))
+### convert CEO info to stand age ####
+# goal: fill this df w/ stand ages (a row for each plot)
+CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
+                                 nrow = length(dataSBP$LC_forest_2021CEO)))
+colnames(CEOStandAge) <- 2021:1990
 
 MaxAge<-80
 
-CEOStandAge[dataSBP$LC_forest_2021CEO ==100, 1] <- MaxAge  # LC_forest_2021CEO either 0 or 100
-CEOStandAge[dataSBP$YrLossCEO<9999, 1] = 2021 - dataSBP$YrLossCEO[dataSBP$YrLossCEO<9999]
-colnames(CEOStandAge)[1] <- 'carbon2021'  # MaxAge or no. of years before 2021
-##CEO stand age calcs
-for (i in 2:32){
-  prev <- i - 1
-  CEOStandAge[,i] <- CEOStandAge[,prev] - 1
-  CEOStandAge[CEOStandAge[,prev]==0,i] <-0
-  colnames(CEOStandAge)[i] <- paste0('carbon', 2022-i)
+#### preprocess CEO info in dataSBP ####
+# add loss & gain event T/F indicators
+dataSBP$HasLoss <- dataSBP$YrLossCEO != 9999  # has forest loss 90-21 or not
+dataSBP$HasGain <- dataSBP$YrGainCEO != 9999  # has forest gain 90-21 or not
+# add info about loss & gain order [WARNING: comparison with 9999 makes no sense
+# only use the info when both loss and gain events are recorded]
+dataSBP$LossThenGain <- dataSBP$YrGainCEO > dataSBP$YrLossCEO
+dataSBP$GainThenLoss <- dataSBP$YrGainCEO < dataSBP$YrLossCEO
+
+#### filling stand age into CEOStandAge ####
+# returns a vector of stand ages from 2021 to 1990
+# MaxAge is the assumed stand age before a year of loss when the year of gain
+# is unknown
+calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
+  is_forest_2021 <- CEOinfo$LC_forest_2021CEO
+  yr_loss <- CEOinfo$YrLossCEO
+  yr_gain <- CEOinfo$YrGainCEO
+  has_loss <- CEOinfo$HasLoss
+  has_gain <- CEOinfo$HasGain
+  loss_then_gain <- CEOinfo$LossThenGain
+  gain_then_loss <- CEOinfo$GainThenLoss
+  # if is non-forest in 2021
+  if (!is_forest_2021) {
+    if (!has_loss & !has_gain) {
+      return(rep(0, 32))
+
+    } else if (has_loss & !has_gain) {
+      stand_age_21_seed <- c(0:MaxAge, rep(0, 2021-yr_loss+1)) %>% rev()
+      return(stand_age_21_seed[1:32])
+
+    } else if (!has_loss & has_gain) {
+      print('not possible 1')
+      # assume is_forest_2021
+      stand_age_since_gain <- 1:(2021-yr_gain+1)
+      stand_age_bc_gain <- rep(0, 1000000)
+      stand_age_bc_21 <- c(stand_age_bc_gain,
+                           stand_age_since_gain)
+      return(rev(stand_age_bc_21)[1:32])
+
+    } else if (has_loss & has_gain) {
+      if (loss_then_gain) {
+        print('not possible 2')
+        # assume is_forest_2021
+        stand_age_since_gain <- 1:(2021-yr_gain+1)
+        stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
+        stand_age_seed_loss <- 0:MaxAge
+        stand_age_seed_21 <- c(stand_age_seed_loss,
+                               stand_age_from_loss_to_gain,
+                               stand_age_since_gain)
+        return(rev(stand_age_seed_21)[1:32])
+
+      } else if (gain_then_loss) {
+        stand_age_since_loss <- rep(0, 2021-yr_loss+1)
+        stand_age_from_gain_to_loss <- 1:(yr_loss-yr_gain)
+        stand_age_before_gain <- rep(0, 100000)
+        stand_age_bc_21 <- c(stand_age_before_gain,
+                             stand_age_from_gain_to_loss,
+                             stand_age_since_loss)
+        return(rev(stand_age_bc_21)[1:32])
+      } else {print("shouldn't be here!")}
+
+    } else {print("shouldn't be here!")}
+
+    # if is forest in 2021
+  } else if (is_forest_2021) {
+    if (!has_loss & !has_gain) {
+      return(MaxAge:(MaxAge-32+1))  # 80 to 49
+
+    } else if (has_loss & !has_gain) {
+      print('not possible 3')
+      # assume !is_forest_2021
+      stand_age_21_seed <- c(0:MaxAge, rep(0, 2021-yr_loss+1)) %>% rev()
+      return(stand_age_21_seed[1:32])
+
+    } else if (!has_loss & has_gain) {
+      stand_age_since_gain <- 1:(2021-yr_gain+1)
+      stand_age_bc_gain <- rep(0, 1000000)
+      stand_age_bc_21 <- c(stand_age_bc_gain,
+                           stand_age_since_gain)
+      return(rev(stand_age_bc_21)[1:32])
+
+    } else if (has_loss & has_gain) {
+      if (gain_then_loss) {
+        print('not possible 4')
+        # assume !is_forest_2021
+        stand_age_since_loss <- rep(0, 2021-yr_loss+1)
+        stand_age_from_gain_to_loss <- 1:(yr_loss-yr_gain)
+        stand_age_before_gain <- rep(0, 100000)
+        stand_age_bc_21 <- c(stand_age_before_gain,
+                             stand_age_from_gain_to_loss,
+                             stand_age_since_loss)
+        return(rev(stand_age_bc_21)[1:32])
+
+      } else if (loss_then_gain) {
+        stand_age_since_gain <- 1:(2021-yr_gain+1)
+        stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
+        stand_age_seed_loss <- 0:MaxAge
+        stand_age_seed_21 <- c(stand_age_seed_loss,
+                               stand_age_from_loss_to_gain,
+                               stand_age_since_gain)
+        return(rev(stand_age_seed_21)[1:32])
+
+      } else {print("shouldn't be here!")}
+
+    } else {print("shouldn't be here!")}
+  } else {print("shouldn't be here!")}
+
 }
-CEOStandAge %>% tail()
+
+for (r in 1:nrow(dataSBP)) {
+  # print(r)
+  CEOinfo <- dataSBP[r, c('LC_forest_2021CEO','YrLossCEO','YrGainCEO',
+                          'HasLoss','HasGain','LossThenGain','GainThenLoss')]
+  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, MaxAge)
+}
+view(CEOStandAge)
 
 ## estimate carbon ####
 ### planted conifer, excluding pine in Europe ######
@@ -291,6 +397,166 @@ lines(stand_age_vec, estimate_carbon_low(stand_age_vec), col='blue')
 lines(stand_age_vec, estimate_carbon_up(stand_age_vec), col='purple')
 legend('topright', legend=c('estimate','lower CI','upper CI'),
        col=c('black', 'blue', 'purple'), lty=1)
+
+## Converting CEO info to stand age ####
+CEOinfo <- dataSBP[, c('LC_forest_2021CEO', 'YrLossCEO', 'YrGainCEO')]
+# forest in 2021? year of most recent loss? year of most recent gain?
+
+### check out CEOinfo: what are all the possible forest gain loss event ####
+### series to deal with ####
+# add event T/F indicators
+CEOinfo$HasLoss <- CEOinfo$YrLossCEO != 9999  # has forest loss 90-21 or not
+CEOinfo$HasGain <- CEOinfo$YrGainCEO != 9999  # has forest gain 90-21 or not
+
+CEOinfo_s <- CEOinfo[, c('LC_forest_2021CEO', 'HasLoss', 'HasGain')]  # simple
+CEOinfo_s %>% group_by_all() %>% count()  # unique rows and their counts
+# all possible combo except for 0,F,T (gained, no loss, but non-forest in 2021)
+# shouldn't have 100,T,F combo (loss, no gain, but still forest in 2021), but
+# 1 plot has the combo, TO-THINK about what to do with it
+
+# when has both gain and loss, check if the order of the 2 years makes sense:
+CEOinfo_both <- CEOinfo[CEOinfo$HasGain & CEOinfo$HasLoss, ]  # no 9999!
+sum(CEOinfo_both$YrGainCEO == CEOinfo_both$YrLossCEO) == 0  # no plot has
+# gain year the same as loss year
+
+# add info about loss & gain order
+CEOinfo_both$LossThenGain <- CEOinfo_both$YrGainCEO > CEOinfo_both$YrLossCEO
+CEOinfo_both$GainThenLoss <- CEOinfo_both$YrGainCEO < CEOinfo_both$YrLossCEO
+# unique combo
+CEOinfo_both[, c('LC_forest_2021CEO', 'LossThenGain', 'GainThenLoss')] %>%
+  group_by_all() %>% count()
+# shouldn't have 0,T,F (loss then gain, but non-forest in 2021) - but 4 plots
+# have the combo, TO-THINK about what to do with them
+
+### convert CEO info to stand age ####
+# goal: fill this df w/ stand ages (a row for each plot)
+CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
+                                 nrow = length(dataSBP$LC_forest_2021CEO)))
+colnames(CEOStandAge) <- 2021:1990
+
+MaxAge<-80
+
+#### preprocess CEO info in dataSBP ####
+# add loss & gain event T/F indicators
+dataSBP$HasLoss <- dataSBP$YrLossCEO != 9999  # has forest loss 90-21 or not
+dataSBP$HasGain <- dataSBP$YrGainCEO != 9999  # has forest gain 90-21 or not
+# add info about loss & gain order [WARNING: comparison with 9999 makes no sense
+# only use the info when both loss and gain events are recorded]
+dataSBP$LossThenGain <- dataSBP$YrGainCEO > dataSBP$YrLossCEO
+dataSBP$GainThenLoss <- dataSBP$YrGainCEO < dataSBP$YrLossCEO
+
+#### filling stand age ####
+# # tests of `calc_stand_age_21_90`
+# rbind(2021:1990, VECTOR_GOES_HERE)
+
+# returns a vector of stand ages from 2021 to 1990
+# MaxAge is the assumed stand age before a year of loss when the year of gain
+# is unknown
+calc_stand_age_21_90 <- function(CEOinfo, MaxAge) {
+  is_forest_2021 <- CEOinfo$LC_forest_2021CEO
+  yr_loss <- CEOinfo$YrLossCEO
+  yr_gain <- CEOinfo$YrGainCEO
+  has_loss <- CEOinfo$HasLoss
+  has_gain <- CEOinfo$HasGain
+  loss_then_gain <- CEOinfo$LossThenGain
+  gain_then_loss <- CEOinfo$GainThenLoss
+  # if is non-forest in 2021
+  if (!is_forest_2021) {
+    if (!has_loss & !has_gain) {
+      return(rep(0, 32))
+
+    } else if (has_loss & !has_gain) {
+      stand_age_21_seed <- c(0:MaxAge, rep(0, 2021-yr_loss+1)) %>% rev()
+      return(stand_age_21_seed[1:32])
+
+    } else if (!has_loss & has_gain) {
+      print('not possible 1')
+      # assume is_forest_2021
+      stand_age_since_gain <- 1:(2021-yr_gain+1)
+      stand_age_bc_gain <- rep(0, 1000000)
+      stand_age_bc_21 <- c(stand_age_bc_gain,
+                           stand_age_since_gain)
+      return(rev(stand_age_bc_21)[1:32])
+
+    } else if (has_loss & has_gain) {
+      if (loss_then_gain) {
+        print('not possible 2')
+        # assume is_forest_2021
+        stand_age_since_gain <- 1:(2021-yr_gain+1)
+        stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
+        stand_age_seed_loss <- 0:MaxAge
+        stand_age_seed_21 <- c(stand_age_seed_loss,
+                               stand_age_from_loss_to_gain,
+                               stand_age_since_gain)
+        return(rev(stand_age_seed_21)[1:32])
+
+      } else if (gain_then_loss) {
+        stand_age_since_loss <- rep(0, 2021-yr_loss+1)
+        stand_age_from_gain_to_loss <- 1:(yr_loss-yr_gain)
+        stand_age_before_gain <- rep(0, 100000)
+        stand_age_bc_21 <- c(stand_age_before_gain,
+                             stand_age_from_gain_to_loss,
+                             stand_age_since_loss)
+        return(rev(stand_age_bc_21)[1:32])
+      } else {print("shouldn't be here!")}
+
+    } else {print("shouldn't be here!")}
+
+  # if is forest in 2021
+  } else if (is_forest_2021) {
+    if (!has_loss & !has_gain) {
+      return(MaxAge:(MaxAge-32+1))  # 80 to 49
+
+    } else if (has_loss & !has_gain) {
+      print('not possible 3')
+      # assume !is_forest_2021
+      stand_age_21_seed <- c(0:MaxAge, rep(0, 2021-yr_loss+1)) %>% rev()
+      return(stand_age_21_seed[1:32])
+
+    } else if (!has_loss & has_gain) {
+      stand_age_since_gain <- 1:(2021-yr_gain+1)
+      stand_age_bc_gain <- rep(0, 1000000)
+      stand_age_bc_21 <- c(stand_age_bc_gain,
+                           stand_age_since_gain)
+      return(rev(stand_age_bc_21)[1:32])
+
+    } else if (has_loss & has_gain) {
+      if (gain_then_loss) {
+        print('not possible 4')
+        # assume !is_forest_2021
+        stand_age_since_loss <- rep(0, 2021-yr_loss+1)
+        stand_age_from_gain_to_loss <- 1:(yr_loss-yr_gain)
+        stand_age_before_gain <- rep(0, 100000)
+        stand_age_bc_21 <- c(stand_age_before_gain,
+                             stand_age_from_gain_to_loss,
+                             stand_age_since_loss)
+        return(rev(stand_age_bc_21)[1:32])
+
+      } else if (loss_then_gain) {
+        stand_age_since_gain <- 1:(2021-yr_gain+1)
+        stand_age_from_loss_to_gain <- rep(0, yr_gain-yr_loss)
+        stand_age_seed_loss <- 0:MaxAge
+        stand_age_seed_21 <- c(stand_age_seed_loss,
+                               stand_age_from_loss_to_gain,
+                               stand_age_since_gain)
+        return(rev(stand_age_seed_21)[1:32])
+
+      } else {print("shouldn't be here!")}
+
+    } else {print("shouldn't be here!")}
+  } else {print("shouldn't be here!")}
+
+}
+
+for (r in 1:nrow(dataSBP)) {
+  # print(r)
+  CEOinfo <- dataSBP[r, c('LC_forest_2021CEO','YrLossCEO','YrGainCEO',
+                          'HasLoss','HasGain','LossThenGain','GainThenLoss')]
+  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, MaxAge)
+}
+view(CEOStandAge)
+
+
 
 ##################################
 ## OLD CODE
