@@ -85,7 +85,8 @@ CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
                                  nrow = length(dataSBP$LC_forest_2021CEO)))
 colnames(CEOStandAge) <- 2021:1990
 
-MaxAge<-80
+# MaxAge<-80
+StartAge <- 80
 
 #### preprocess CEO info in dataSBP ####
 # add loss & gain event T/F indicators
@@ -220,24 +221,24 @@ for (r in 1:nrow(dataSBP)) {
   # print(r)
   CEOinfo <- dataSBP[r, c('LC_forest_2021CEO','YrLossCEO','YrGainCEO',
                           'HasLoss','HasGain','LossThenGain','GainThenLoss')]
-  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, MaxAge)
+  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, StartAge)
 }
 view(CEOStandAge)
-# write.csv(CEOStandAge, file='results/stand_age_40_147ddc5_Gain1YrAfterLossIfLossThenGain.csv')
+# write.csv(CEOStandAge, file='results/stand_age_start80_755ac7c.csv')
 
-#### compare with John's stand age and carbon by year ####
-# Carbon assumes a forest start age of 80 and is for natural regeneration
-age_carbon_df <- read.csv('../ceo-samples-standage-carbon.csv')
-age_df <- age_carbon_df[, grepl('standAge', colnames(age_carbon_df))]
-age_df <- cbind(age_carbon_df$sampleid, age_df)
-carbon_df <- age_carbon_df[, grepl('carbon', colnames(age_carbon_df))]
-carbon_df <- cbind(age_carbon_df$sampleid, carbon_df)
-view(age_df[order(age_df[,1]),
-            order(colnames(age_df), decreasing = T)])
-view(CEOStandAge[order(dataSBP$pl_sampleid), ])
-carbon_df_ord <- carbon_df[order(carbon_df[,1]),
-                           order(colnames(carbon_df), decreasing = T)]
-view(carbon_df_ord)  # compare with CEOcarbonNReg below
+# #### compare with John's stand age and carbon by year ####
+# # Carbon assumes a forest start age of 80 and is for natural regeneration
+# age_carbon_df <- read.csv('../ceo-samples-standage-carbon.csv')
+# age_df <- age_carbon_df[, grepl('standAge', colnames(age_carbon_df))]
+# age_df <- cbind(age_carbon_df$sampleid, age_df)
+# carbon_df <- age_carbon_df[, grepl('carbon', colnames(age_carbon_df))]
+# carbon_df <- cbind(age_carbon_df$sampleid, carbon_df)
+# view(age_df[order(age_df[,1]),
+#             order(colnames(age_df), decreasing = T)])
+# view(CEOStandAge[order(dataSBP$pl_sampleid), ])
+# carbon_df_ord <- carbon_df[order(carbon_df[,1]),
+#                            order(colnames(carbon_df), decreasing = T)]
+# view(carbon_df_ord)  # compare with CEOcarbonNReg below
 
 ## estimate carbon per pixel ####
 ### planted conifer, excluding pine in Europe ######
@@ -364,7 +365,6 @@ for (yyyy in 1990:2021) {
 }
 C_est_ci_ci_df
 C_est_ci_ci_df <- cbind(1990:2021, C_est_ci_ci_df)
-view(C_est_ci_ci_df)
 colnames(C_est_ci_ci_df) <- c('year',
                            'totalC_estimate_from_growthFunc_ton',
                            'upp95CI_totalC_estimate_from_growthFunc_ton',
@@ -375,9 +375,12 @@ colnames(C_est_ci_ci_df) <- c('year',
                            'totalC_estimate_from_lowGrowthFunc_ton',
                            'upp95CI_totalC_estimate_from_lowGrowthFunc_ton',
                            'low95CI_totalC_estimate_from_lowGrowthFunc_ton')
+view(C_est_ci_ci_df)
+
 write.csv(C_est_ci_ci_df, file = paste0('results/',
                                         'C_estimate_95ci_loMiUpGrowthFunc_',
-                                        as.character(MaxAge),
+                                        'start',
+                                        as.character(StartAge),
                                         '_',
                                         forest_type_full,
                                         '.csv'))
@@ -395,7 +398,7 @@ ggplot(C_est_ci_ci_df) +
                      ymax=upp95CI_totalC_estimate_from_uppGrowthFunc_ton),
                  width=0.4, colour="red", alpha=0.9, size=1.3) +
   ylab('Carbon (ton)') +
-  ggtitle(paste(forest_type, MaxAge))
+  ggtitle(paste(forest_type, StartAge))
 
 ### estimate, SE, CI for each stand age ####
 svyby(~carbon2021CON, by=~carbon2021CON, strat_design, svytotal)  # replace
@@ -516,7 +519,7 @@ CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
                                  nrow = length(dataSBP$LC_forest_2021CEO)))
 colnames(CEOStandAge) <- 2021:1990
 
-MaxAge<-80
+StartAge<-80
 
 #### preprocess CEO info in dataSBP ####
 # add loss & gain event T/F indicators
@@ -653,7 +656,7 @@ for (r in 1:nrow(dataSBP)) {
   # print(r)
   CEOinfo <- dataSBP[r, c('LC_forest_2021CEO','YrLossCEO','YrGainCEO',
                           'HasLoss','HasGain','LossThenGain','GainThenLoss')]
-  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, MaxAge)
+  CEOStandAge[r, ] <- calc_stand_age_21_90(CEOinfo, StartAge)
 }
 view(CEOStandAge)
 
