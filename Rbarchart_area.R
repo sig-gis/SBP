@@ -77,10 +77,9 @@ head(dataSBP)
 colnames(dataSBP)  # count, readable from dataStrata
 rm(dataCEOYR, dataall, dataGEE, dataStrata)
 
-##################################
-#############################
+######################
 
-### convert CEO info to stand age ####
+## convert CEO info to stand age ####
 # goal: fill this df w/ stand ages (a row for each plot)
 CEOStandAge <- data.frame(matrix(ncol = length(2021:1990),
                                  nrow = length(dataSBP$LC_forest_2021CEO)))
@@ -228,19 +227,19 @@ carbon_df_ord <- carbon_df[order(carbon_df[,1]),
                            order(colnames(carbon_df), decreasing = T)]
 view(carbon_df_ord)  # compare with CEOcarbonNReg below
 
-## estimate carbon ####
+## estimate carbon per pixel ####
 ### planted conifer, excluding pine in Europe ######
 b0 <- 156.968
 b1 <- 0.064457
 b2 <- 3.946418
 ###  CI upper:
-b0up <- 83.6653
-b1up <- 0.048341
-b2up <- 1.286441
+b0up <- 177.1787
+b1up <- 0.047689
+b2up <- 2.00096
 ###  CI lower:
-b0low <- 62.1984
-b1low <- 0.086366
-b2low <- 4.068786
+b0low <- 138.3733
+b1low <- 0.080944
+b2low <- 8.37114
 
 ##CEO carbon calcs
 CEOcarbonCON <- data.frame(matrix(ncol = 30, nrow = length(dataSBP$LC_forest_2021CEO)))
@@ -264,7 +263,6 @@ for (i in 1:32){
 }
 
 
-#################################
 ### nat regen forest europe: ####
 b0 <- 72.20785
 b1 <- 0.066939
@@ -307,42 +305,83 @@ view(round(CEOcarbonNReg[order(dataSBP$pl_sampleid), ],2))
 
 rm(dataSBP,CEOStandAge, CEOcarbonNReg, CEOcarbonNReglow, CEOcarbonNRegup, CEOcarbonCON, CEOcarbonCONlow, CEOcarbonCONup)
 
-##################################
-# Area weighted estimates ####
-### select data of interest - carbon estimate and ci ####
 
+
+
+# area weighted estimates of total carbon ####
+### select data of interest - per-pixel carbon estimate and ci ####
 C_est_ci_df <- CarbonCon
 forest_type <- 'CON'
+forest_type_full <- 'conifer'
 
 C_est_ci_df <- CarbonNatReg
 forest_type <- 'NReg'
+forest_type_full <- 'natreg'
 
 ### survey design ####
 strat_design <- svydesign(id = ~1, strata = ~pl_strata, fpc = ~count,
                           data = C_est_ci_df)
 strat_design
 
-### confidence intervals on ####
-C_est_ci_df <- data.frame()
+### total carbon & confidence intervals based on ####
+### 1) per-pixel carbon estimate, 2) upper CI of per-pixel C est
+### and 3) lower CI of per-pixel C est.
+C_est_ci_ci_df <- data.frame()
 
 for (yyyy in 1990:2021) {
-  # estimate
-  svy_tot <- svytotal(as.formula(paste0('~carbon',as.character(yyyy),forest_type)),
-                      strat_design)
-  # 95% ci limits
-  ci <- confint(svy_tot)
+  # total C and CI based on per-pixel C estimate
+  C_est_formula <- as.formula(paste0('~carbon',as.character(yyyy),forest_type))
+  svy_tot <- svytotal(C_est_formula, strat_design)  # total C
+  ci <- confint(svy_tot)  # CI of total C
   C_est_ci_yyyy <- cbind(coef(svy_tot), ci)
-  C_est_ci_df <- rbind(C_est_ci_df, C_est_ci_yyyy)
+  # total C and CI based on upperCI of per-pixel C estimate
+  C_est_formula_up <- as.formula(paste0('~carbon',as.character(yyyy),
+                                        forest_type,'up'))
+  svy_tot_up <- svytotal(C_est_formula_up, strat_design)  # total C
+  ci_up <- confint(svy_tot_up)  # CI of total C
+  C_est_ci_yyyy_up <- cbind(coef(svy_tot_up), ci_up)
+  # total C and CI based on lowerCI of per-pixel C estimate
+  C_est_formula_low <- as.formula(paste0('~carbon',as.character(yyyy),
+                                         forest_type,'low'))
+  svy_tot_low <- svytotal(C_est_formula_low, strat_design)  # total C
+  ci_low <- confint(svy_tot_low)  # CI of total C
+  C_est_ci_yyyy_low <- cbind(coef(svy_tot_low), ci_low)
+  # save all results
+  C_est_ci_ci_df <- rbind(C_est_ci_ci_df,
+                          cbind(C_est_ci_yyyy, C_est_ci_yyyy_up, C_est_ci_yyyy_low))
 }
-C_est_ci_df
-C_est_ci_df <- cbind(1990:2021, C_est_ci_df)
-colnames(C_est_ci_df) <- c('year', 'total', 'lower', 'upper')
-# write.csv(C_est_ci_df, file = 'results/coniferCarbonEst_40.csv')
+C_est_ci_ci_df
+C_est_ci_ci_df <- cbind(1990:2021, C_est_ci_ci_df)
+view(C_est_ci_ci_df)
+colnames(C_est_ci_ci_df) <- c('year',
+                           'totalC_estimate_from_growthFunc_ton',
+                           'upp95CI_totalC_estimate_from_growthFunc_ton',
+                           'low95CI_totalC_estimate_from_growthFunc_ton',
+                           'totalC_estimate_from_uppGrowthFunc_ton',
+                           'upp95CI_totalC_estimate_from_uppGrowthFunc_ton',
+                           'low95CI_totalC_estimate_from_uppGrowthFunc_ton',
+                           'totalC_estimate_from_lowGrowthFunc_ton',
+                           'upp95CI_totalC_estimate_from_lowGrowthFunc_ton',
+                           'low95CI_totalC_estimate_from_lowGrowthFunc_ton')
+write.csv(C_est_ci_ci_df, file = paste0('results/',
+                                        'C_estimate_95ci_loMiUpGrowthFunc_',
+                                        as.character(MaxAge),
+                                        '_',
+                                        forest_type_full,
+                                        '.csv'))
 
 ### plot ####
-ggplot(C_est_ci_df) +
-  geom_bar( aes(x=year, y=total), stat="identity", fill="skyblue", alpha=0.5) +
-  geom_crossbar( aes(x=year, y=total, ymin=lower, ymax=upper), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+ggplot(C_est_ci_ci_df) +
+  geom_bar( aes(x=year, y=totalC_estimate_from_growthFunc_ton), stat="identity", fill="skyblue", alpha=0.5) +
+  geom_crossbar( aes(x=year, y=totalC_estimate_from_growthFunc_ton,
+                     ymin=low95CI_totalC_estimate_from_growthFunc_ton,
+                     ymax=upp95CI_totalC_estimate_from_growthFunc_ton),
+                 width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  geom_bar( aes(x=year, y=totalC_estimate_from_uppGrowthFunc_ton), stat="identity", fill="green", alpha=0.5) +
+  geom_crossbar( aes(x=year, y=totalC_estimate_from_uppGrowthFunc_ton,
+                     ymin=low95CI_totalC_estimate_from_uppGrowthFunc_ton,
+                     ymax=upp95CI_totalC_estimate_from_uppGrowthFunc_ton),
+                 width=0.4, colour="red", alpha=0.9, size=1.3) +
   ylab('Carbon (ton)') +
   ggtitle(paste(forest_type, MaxAge))
 
