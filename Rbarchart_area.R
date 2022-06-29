@@ -227,18 +227,27 @@ view(CEOStandAge)
 # write.csv(CEOStandAge, file='results/stand_age_start80_755ac7c.csv')
 
 # #### compare with John's stand age and carbon by year ####
-# # Carbon assumes a forest start age of 80 and is for natural regeneration
-# age_carbon_df <- read.csv('../ceo-samples-standage-carbon.csv')
-# age_df <- age_carbon_df[, grepl('standAge', colnames(age_carbon_df))]
-# age_df <- cbind(age_carbon_df$sampleid, age_df)
-# carbon_df <- age_carbon_df[, grepl('carbon', colnames(age_carbon_df))]
-# carbon_df <- cbind(age_carbon_df$sampleid, carbon_df)
-# view(age_df[order(age_df[,1]),
-#             order(colnames(age_df), decreasing = T)])
-# view(CEOStandAge[order(dataSBP$pl_sampleid), ])
-# carbon_df_ord <- carbon_df[order(carbon_df[,1]),
-#                            order(colnames(carbon_df), decreasing = T)]
-# view(carbon_df_ord)  # compare with CEOcarbonNReg below
+# Carbon assumes a forest start age of 80 and is for natural regeneration
+age_carbon_df <- read.csv('../ceo-samples-standage-carbon.csv')
+age_df <- age_carbon_df[, grepl('standAge', colnames(age_carbon_df))]
+age_df <- cbind(age_carbon_df$sampleid, age_df)
+carbon_df <- age_carbon_df[, grepl('carbon', colnames(age_carbon_df))]
+carbon_df <- cbind(age_carbon_df$sampleid, carbon_df)
+view(age_df[order(age_df[,1]),
+            order(colnames(age_df), decreasing = T)])
+view(CEOStandAge[order(dataSBP$pl_sampleid), ])
+carbon_df_ord <- carbon_df[order(carbon_df[,1]),
+                           order(colnames(carbon_df), decreasing = T)]
+view(carbon_df_ord)  # compare with CEOcarbonNReg below
+
+##### scatter plot carbon for each sample pt: carbon based on map (age_carbon_df) ####
+# vs carbon based on CEO (CEOcarbonNReg from below made with start age 80)
+# for 2021 only
+plot(CEOcarbonNReg[order(dataSBP$pl_sampleid), 'carbon2021NReg'],
+     carbon_df_ord$X2021_carbon*0.09,
+     pch=19, xlab='based on CEO', ylab='based on map',
+     main='Estimate carbon in sample plots (tonne) in 2021')
+lines(0:7, 0:7)
 
 ## estimate carbon per pixel ####
 ### planted conifer, excluding pine in Europe ######
